@@ -1,4 +1,4 @@
-# WindKraft: 24-hour wind forecasting, yaw advice and energy estimate for a wind turbine
+# Aeolus: 24-hour wind forecasting, yaw advice and energy estimate for a wind turbine
 
 > A complete guide to the project, written so that you can explain **every part of it** and answer questions about it.
 > Part 1 explains the idea in plain language. Part 2 is the heart of the project, the **prediction pipeline**, step by step.
