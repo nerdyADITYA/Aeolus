@@ -1,0 +1,21 @@
+lat = 22.307159
+lon = 73.181221
+radius = 12
+pins = 6
+start date = 2025-01-01
+end date = 2025-11-20
+save the csv file as "file_name.csv"
+prediction file : wind_residual_lstm.h5
+scaler file : scalers_residual.npz
+
+dependencies needed:
+pip install pandas numpy requests folium tqdm matplotlib tensorflow scikit-learn
+
+Ahmedabad
+lat = 23.022505
+lon = 72.571365
+
+
+NREL Api Key = "K9R1hL7DTUbqgpslWbIvNvgncQUXr2AneV6veGBc"
+
+21.215206,72.831062;21.125274,72.831062

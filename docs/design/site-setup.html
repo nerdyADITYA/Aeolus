@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WindKraft Site Setup (design template)</title><style>
+:root{--bg:#F6F8FB;--surface:#fff;--border:#E3E8EF;--text:#0E1726;--muted:#5B6B80;--accent:#0891B2;--accent2:#7C3AED;
+--good:#059669;--warn:#B45309;--bad:#DC2626;--grid:#E9EEF5;--glow:rgba(8,145,178,.12);--r:14px}
+[data-theme=dark]{--bg:#0A0E14;--surface:#111823;--border:#1E2A3A;--text:#E6EDF5;--muted:#8A99AD;--accent:#22D3EE;--accent2:#A78BFA;
+--good:#34D399;--warn:#FBBF24;--bad:#F87171;--grid:#172232;--glow:rgba(34,211,238,.14)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+background-image:radial-gradient(900px 400px at 85% -10%,var(--glow),transparent)}
+.mono{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 60px}
+header{display:flex;align-items:center;gap:16px;padding:18px 0;position:sticky;top:0;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);z-index:5}
+.logo{font-weight:600;letter-spacing:.14em;font-size:13px;display:flex;align-items:center;gap:10px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+.spacer{flex:1}.chip{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:99px;display:inline-flex;gap:8px;align-items:center}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--good);animation:p 2.4s infinite}
+@keyframes p{50%{opacity:.35}}@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+button{font:inherit;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:10px;padding:7px 13px;cursor:pointer;transition:.15s}
+button:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}button.primary{background:var(--accent);color:#04121a;border-color:transparent;font-weight:600}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:2fr 1fr}.g22{grid-template-columns:1fr 1fr}
+@media(max-width:960px){.g4,.g3,.g2,.g22{grid-template-columns:1fr 1fr}}@media(max-width:620px){.g4,.g3,.g2,.g22{grid-template-columns:1fr}}
+h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:34px 0 14px}
+h3{font-size:14px;font-weight:500;margin-bottom:2px}.sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+.kpi .v{font-size:34px;font-weight:300;letter-spacing:-.02em;margin:6px 0 0}.kpi .u{font-size:13px;color:var(--muted);margin-left:4px}
+.kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+svg{width:100%;height:auto;display:block}svg text{fill:var(--muted);font-size:10.5px;font-family:inherit}
+table{width:100%;border-collapse:collapse;font-size:13px}th{font-weight:500;color:var(--muted);text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface)}
+td{padding:8px 10px;border-bottom:1px solid var(--grid)}tr:hover td{background:var(--grid)}td.n,th.n{text-align:right}
+.scroll{max-height:380px;overflow:auto;border-radius:10px}
+.badge{font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid currentColor}.b-g{color:var(--good)}.b-w{color:var(--warn)}.b-m{color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}.legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+input,select{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 12px;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}label{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px}
+.note{color:var(--muted);font-size:12px;border-left:2px solid var(--accent);padding-left:12px;margin-top:14px}
+footer{margin-top:50px;color:var(--muted);font-size:12px}details summary{cursor:pointer;color:var(--text)}
+
+.map{height:340px;border-radius:12px;position:relative;overflow:hidden;border:1px solid var(--border);
+background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/48px 48px,var(--bg)}
+.map .pin{position:absolute;left:52%;top:46%;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 6px var(--glow),0 0 24px var(--accent)}
+.map .ring{position:absolute;left:calc(52% - 40px);top:calc(46% - 40px);width:96px;height:96px;border-radius:50%;border:1px dashed var(--accent);opacity:.5}
+.map .tag{position:absolute;left:calc(52% + 24px);top:calc(46% - 8px);font-size:12px;background:var(--surface);border:1px solid var(--border);padding:4px 10px;border-radius:8px}
+.map small{position:absolute;left:12px;bottom:10px;color:var(--muted);font-size:11px}
+.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:center;color:var(--muted)}
+.step b{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:grid;place-items:center;font-size:11px;font-weight:500}
+.step.done{color:var(--text)}.step.done b{background:var(--good);border-color:transparent;color:#04121a}
+.step.now{color:var(--text)}.step.now b{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}
+.bar{height:6px;background:var(--grid);border-radius:99px;overflow:hidden;margin:14px 0 6px}.bar i{display:block;height:100%;width:46%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:99px}
+</style></head><body><div class="wrap"><header><div class="logo"><i></i>WINDKRAFT</div>
+<span class="chip mono"><span class="dot"></span><span id="origin"></span></span><div class="spacer"></div>
+<span class="chip">Design template · sample data from real model output</span><button onclick="toggleTheme()" aria-label="Toggle theme">◐ Theme</button></header>
+<h2>Site</h2>
+<div class="grid g2">
+ <div class="card"><h3>Select turbine location</h3><div class="sub">Click the map or type coordinates</div>
+  <div class="map"><div class="ring"></div><div class="pin"></div><div class="tag mono">23.0225, 72.5714</div><small>OpenStreetMap tiles in the real app (react-leaflet)</small></div></div>
+ <div class="card"><div class="grid" style="gap:14px">
+  <div><label>Latitude</label><input class="mono" value="23.0225"></div><div><label>Longitude</label><input class="mono" value="72.5714"></div>
+  <div><label>Turbine (NREL)</label><select><option>2023 NREL Bespoke 3.3 MW · 148 m rotor · hub 100 m</option><option>BAR HighSP 5.0 MW · hub 100 m</option><option>IEC Class 3 composite 2 MW · hub 100 m</option></select></div>
+  <div><label>Current nacelle heading (optional)</label><input class="mono" placeholder="degrees"></div>
+  <button class="primary">Run forecast</button>
+  <p class="note" style="margin:0">First run downloads 3 years of data and trains the model. Later refreshes take seconds.</p></div></div>
+</div>
+<h2>Job progress</h2>
+<div class="grid g22">
+ <div class="card"><h3>Training model for this site</h3><div class="sub mono">job 7f3a · running · 46%</div><div class="bar"><i></i></div>
+  <div class="steps" style="margin-top:16px">
+   <div class="step done"><b>✓</b>Download historical data</div><div class="step done"><b>✓</b>Validate &amp; clean</div>
+   <div class="step done"><b>✓</b>Baselines</div><div class="step now"><b>4</b>Tune SARIMAX / LightGBM</div>
+   <div class="step"><b>5</b>Rolling backtest</div><div class="step"><b>6</b>Select model</div><div class="step"><b>7</b>Generate 24 h forecast</div></div></div>
+ <div class="card"><h3>Empty state</h3><div class="sub">before any forecast exists</div>
+  <div style="display:grid;place-items:center;height:210px;text-align:center;color:var(--muted)">
+   <div><svg viewBox="0 0 80 80" width="72" style="margin:auto;opacity:.8"><circle cx="40" cy="40" r="30" fill="none" stroke="var(--border)"/><path d="M40 40l-4-24h8z" fill="var(--accent)"/><path d="M40 40l21 12-4 6zM40 40L19 52l4 6z" fill="var(--accent)" opacity=".5"/><circle cx="40" cy="40" r="3" fill="var(--accent)"/></svg>
+   <p style="margin-top:12px">No forecast yet.<br>Enter a location and run a forecast.</p></div></div></div>
+</div>
+<footer>Template only: no interactions are wired.</footer></div>
+<script>
+const $=s=>document.querySelector(s);
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}if(window.draw)draw()}
+let _t='dark';try{_t=localStorage.getItem('theme')||'dark'}catch(e){}
+document.documentElement.dataset.theme=_t;
+function toggleTheme(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}
+// minimal SVG line/bar chart helper
+function chart(el,{w=640,h=240,series=[],bars=null,xs=[],ymin=null,ymax=null,unit='',yticks=4,area=false}){
+  const p={l:42,r:12,t:10,b:26},iw=w-p.l-p.r,ih=h-p.t-p.b;
+  const all=series.flatMap(s=>s.y.filter(v=>v!=null)).concat(bars?bars.y:[]);
+  let lo=ymin??Math.min(0,...all),hi=ymax??Math.max(...all)*1.1;if(hi===lo)hi=lo+1;
+  const X=i=>p.l+(xs.length>1?i*iw/(xs.length-1):iw/2),Y=v=>p.t+ih-(v-lo)/(hi-lo)*ih;
+  let s=`<svg viewBox="0 0 ${w} ${h}" role="img">`;
+  for(let k=0;k<=yticks;k++){const v=lo+(hi-lo)*k/yticks,y=Y(v);s+=`<line x1="${p.l}" x2="${w-p.r}" y1="${y}" y2="${y}" stroke="${cssv('--grid')}"/><text x="${p.l-8}" y="${y+3}" text-anchor="end">${v.toFixed(v%1?1:0)}</text>`}
+  const step=Math.ceil(xs.length/8);xs.forEach((x,i)=>{if(i%step===0)s+=`<text x="${X(i)}" y="${h-8}" text-anchor="middle">${x}</text>`});
+  if(bars){const bw=Math.max(3,iw/xs.length*.6);bars.y.forEach((v,i)=>{s+=`<rect x="${X(i)-bw/2}" y="${Y(v)}" width="${bw}" height="${Math.max(0,Y(lo)-Y(v))}" rx="3" fill="${bars.color}" opacity=".85"><title>${xs[i]}: ${v}${unit}</title></rect>`})}
+  series.forEach(se=>{const pts=se.y.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
+    if(se.dots){pts.forEach((q,i)=>s+=`<circle cx="${q[0]}" cy="${q[1]}" r="3" fill="${se.color}"><title>${xs[i]}: ${se.y[i]}${unit}</title></circle>`);return}
+    const d=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join('');
+    if(area)s+=`<path d="${d}L${pts.at(-1)[0]} ${Y(lo)}L${pts[0][0]} ${Y(lo)}Z" fill="${se.color}" opacity=".10"/>`;
+    s+=`<path d="${d}" fill="none" stroke="${se.color}" stroke-width="2" stroke-linejoin="round" ${se.dash?'stroke-dasharray="5 4"':''}/>`;
+    if(se.marks)pts.forEach((q,i)=>s+=`<circle cx="${q[0]}" cy="${q[1]}" r="3.2" fill="${se.color}"><title>${se.name} ${xs[i]}: ${se.y[i]}${unit}</title></circle>`)});
+  el.innerHTML=s+'</svg>'}
+function compass(el,deg,ok){const c=100,r=78;let s=`<svg viewBox="0 0 200 200" style="max-width:220px;margin:auto">
+<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${cssv('--border')}" stroke-width="1.5"/><circle cx="${c}" cy="${c}" r="${r-24}" fill="none" stroke="${cssv('--grid')}"/>`;
+  for(let a=0;a<360;a+=30){const t=a*Math.PI/180,l=a%90?4:9;s+=`<line x1="${c+Math.sin(t)*r}" y1="${c-Math.cos(t)*r}" x2="${c+Math.sin(t)*(r-l)}" y2="${c-Math.cos(t)*(r-l)}" stroke="${cssv('--muted')}"/>`}
+  [['N',0],['E',90],['S',180],['W',270]].forEach(([n,a])=>{const t=a*Math.PI/180;s+=`<text x="${c+Math.sin(t)*(r+14)}" y="${c-Math.cos(t)*(r+14)+4}" text-anchor="middle">${n}</text>`});
+  const col=ok?cssv('--accent'):cssv('--muted');
+  s+=`<g transform="rotate(${deg} ${c} ${c})"><path d="M${c} ${c-r+8}L${c+7} ${c+6}L${c} ${c-2}L${c-7} ${c+6}Z" fill="${col}"/><line x1="${c}" y1="${c-2}" x2="${c}" y2="${c+r-30}" stroke="${col}" stroke-opacity=".35" stroke-dasharray="3 4"/></g>
+<circle cx="${c}" cy="${c}" r="4" fill="${col}"/></svg>`;el.innerHTML=s}
+$('#origin').textContent='no forecast yet';</script></body></html>

@@ -1,0 +1,52 @@
+/* Design tokens (docs/PROJECT_PLAN.md section 5). Dark first; one accent; thin lines; numbers are the heroes. */
+:root {
+  --bg: #f6f8fb;
+  --surface: #ffffff;
+  --surface-2: #f0f4f9;
+  --border: #e3e8ef;
+  --grid: #e9eef5;
+  --text: #0e1726;
+  --muted: #5b6b80;
+  --accent: #0891b2;
+  --accent-ink: #ffffff;
+  --accent-2: #7c3aed;
+  --good: #047857;
+  --warn: #b45309;
+  --bad: #b91c1c;
+  --glow: rgba(8, 145, 178, 0.14);
+  --shadow: 0 1px 2px rgba(14, 23, 38, 0.05);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --gap: 16px;
+  --gutter: clamp(16px, 2.2vw, 44px);
+  --font-ui: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --t-fast: 150ms;
+  --t-med: 250ms;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0a0e14;
+  --surface: #111823;
+  --surface-2: #0d141d;
+  --border: #1e2a3a;
+  --grid: #172232;
+  --text: #e6edf5;
+  --muted: #8a99ad;
+  --accent: #22d3ee;
+  --accent-ink: #04121a;
+  --accent-2: #a78bfa;
+  --good: #34d399;
+  --warn: #fbbf24;
+  --bad: #f87171;
+  --glow: rgba(34, 211, 238, 0.16);
+  --shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t-med: 0ms;
+  }
+}

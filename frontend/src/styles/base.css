@@ -1,0 +1,89 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  background: var(--bg);
+  background-image: radial-gradient(900px 420px at 85% -12%, var(--glow), transparent);
+  background-repeat: no-repeat;
+  color: var(--text);
+  font: 14px/1.5 var(--font-ui);
+  min-height: 100vh;
+}
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+a {
+  color: var(--accent);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.muted {
+  color: var(--muted);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.wrap {
+  width: 100%;                          /* fluid: use the whole window, only the side padding scales */
+  padding: 0 var(--gutter) 64px;
+}
+
+/* responsive grid helpers */
+.grid {
+  display: grid;
+  gap: var(--gap);
+}
+.g-site {
+  grid-template-columns: 3fr 2fr;
+}
+.g-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.g-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 960px) {
+  .g-site,
+  .g-2 {
+    grid-template-columns: 1fr;
+  }
+  .g-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  :root {
+    --gutter: 16px;
+  }
+  .g-4 {
+    grid-template-columns: 1fr;
+  }
+}

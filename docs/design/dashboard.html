@@ -1,0 +1,171 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WindKraft Dashboard (design template)</title><style>
+:root{--bg:#F6F8FB;--surface:#fff;--border:#E3E8EF;--text:#0E1726;--muted:#5B6B80;--accent:#0891B2;--accent2:#7C3AED;
+--good:#059669;--warn:#B45309;--bad:#DC2626;--grid:#E9EEF5;--glow:rgba(8,145,178,.12);--r:14px}
+[data-theme=dark]{--bg:#0A0E14;--surface:#111823;--border:#1E2A3A;--text:#E6EDF5;--muted:#8A99AD;--accent:#22D3EE;--accent2:#A78BFA;
+--good:#34D399;--warn:#FBBF24;--bad:#F87171;--grid:#172232;--glow:rgba(34,211,238,.14)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font:14px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+background-image:radial-gradient(900px 400px at 85% -10%,var(--glow),transparent)}
+.mono{font-family:"JetBrains Mono",ui-monospace,Consolas,monospace}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 60px}
+header{display:flex;align-items:center;gap:16px;padding:18px 0;position:sticky;top:0;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);z-index:5}
+.logo{font-weight:600;letter-spacing:.14em;font-size:13px;display:flex;align-items:center;gap:10px}
+.logo i{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+.spacer{flex:1}.chip{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:99px;display:inline-flex;gap:8px;align-items:center}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--good);animation:p 2.4s infinite}
+@keyframes p{50%{opacity:.35}}@media(prefers-reduced-motion:reduce){.dot{animation:none}}
+button{font:inherit;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:10px;padding:7px 13px;cursor:pointer;transition:.15s}
+button:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}button.primary{background:var(--accent);color:#04121a;border-color:transparent;font-weight:600}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.grid{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:2fr 1fr}.g22{grid-template-columns:1fr 1fr}
+@media(max-width:960px){.g4,.g3,.g2,.g22{grid-template-columns:1fr 1fr}}@media(max-width:620px){.g4,.g3,.g2,.g22{grid-template-columns:1fr}}
+h2{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:34px 0 14px}
+h3{font-size:14px;font-weight:500;margin-bottom:2px}.sub{color:var(--muted);font-size:12px;margin-bottom:12px}
+.kpi .v{font-size:34px;font-weight:300;letter-spacing:-.02em;margin:6px 0 0}.kpi .u{font-size:13px;color:var(--muted);margin-left:4px}
+.kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+svg{width:100%;height:auto;display:block}svg text{fill:var(--muted);font-size:10.5px;font-family:inherit}
+table{width:100%;border-collapse:collapse;font-size:13px}th{font-weight:500;color:var(--muted);text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface)}
+td{padding:8px 10px;border-bottom:1px solid var(--grid)}tr:hover td{background:var(--grid)}td.n,th.n{text-align:right}
+.scroll{max-height:380px;overflow:auto;border-radius:10px}
+.badge{font-size:11px;padding:2px 8px;border-radius:99px;border:1px solid currentColor}.b-g{color:var(--good)}.b-w{color:var(--warn)}.b-m{color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:8px}.legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+input,select{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:9px 12px;width:100%}
+input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--glow)}label{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:6px}
+.note{color:var(--muted);font-size:12px;border-left:2px solid var(--accent);padding-left:12px;margin-top:14px}
+footer{margin-top:50px;color:var(--muted);font-size:12px}details summary{cursor:pointer;color:var(--text)}
+</style></head><body><div class="wrap">
+<header><div class="logo"><i></i>WINDKRAFT</div>
+<span class="chip mono"><span class="dot"></span><span id="origin"></span></span><div class="spacer"></div>
+<span class="chip">Design template · sample data from real model output</span><button onclick="toggleTheme()" aria-label="Toggle theme">◐ Theme</button></header>
+<div class="grid g4" id="kpis"></div>
+
+<h2>Forecast · next 24 h</h2>
+<div class="grid g2">
+ <div class="card"><h3>Wind speed @ 100 m</h3><div class="sub">ML model only · hub-height power uses the NREL curve</div><div id="c-speed"></div>
+  <div class="legend"><span><i style="background:var(--accent)"></i>LightGBM forecast</span><span><i style="background:var(--muted)"></i>cut-in 3 m/s</span></div></div>
+ <div class="card"><h3>Recommended heading</h3><div class="sub" id="cmp-sub"></div><div id="compass"></div>
+  <div style="text-align:center;margin-top:6px"><span class="mono" style="font-size:28px;font-weight:300" id="cmp-deg"></span> <span class="badge b-g" id="cmp-b"></span></div></div>
+</div>
+<div class="grid g22" style="margin-top:16px">
+ <div class="card"><h3>Wind direction (from)</h3><div class="sub">degrees · markers only where direction is reliable</div><div id="c-dir"></div></div>
+ <div class="card"><h3>Direction confidence</h3><div class="sub">predicted vector magnitude R · threshold 0.75</div><div id="c-conf"></div></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Hourly power &amp; energy</h3><div class="sub">kW per hour = kWh · idealised curve, no wake or availability losses</div><div id="c-pow"></div></div>
+
+<h2>Forecast table</h2>
+<div class="card"><div style="display:flex;gap:10px;margin-bottom:12px"><div class="spacer"></div><button>Export CSV</button><button>Export JSON</button></div>
+<div class="scroll"><table id="t-fc"></table></div></div>
+
+<h2>Model quality · held-out rolling backtest (596 origins)</h2>
+<div class="grid g3">
+ <div class="card"><h3>Speed MAE by lead</h3><div class="sub">m/s · lower is better</div><div id="m-mae"></div></div>
+ <div class="card"><h3>Speed RMSE by lead</h3><div class="sub">m/s</div><div id="m-rmse"></div></div>
+ <div class="card"><h3>Direction circular MAE</h3><div class="sub">degrees · observed wind ≥ 3 m/s</div><div id="m-dir"></div></div>
+</div>
+<div class="legend" id="m-leg" style="margin:10px 0 16px"></div>
+<div class="card"><h3>Metrics summary</h3><div class="sub">winner highlighted · all models scored on identical origins</div><div class="scroll"><table id="t-m"></table></div>
+<p class="note">LightGBM is the selected model for speed and direction. Errors are measured against reanalysis, not a site anemometer.</p></div>
+
+<h2>Accuracy check · model vs Forecast API vs what happened</h2>
+<div class="card" style="margin-bottom:16px;display:flex;gap:14px;align-items:end;flex-wrap:wrap">
+ <div style="min-width:170px"><label>Forecast date</label><input class="mono" value="2026-10-22" type="date"></div>
+ <div style="min-width:150px"><label>Compare</label><select><option>Single date</option><option>Last 7 days</option><option>Full held-out period (150 d)</option></select></div>
+ <div class="spacer"></div><button class="primary">Run accuracy check</button></div>
+<div class="grid g2">
+ <div class="card"><h3>Wind speed · <span class="mono" id="a-date"></span></h3><div class="sub">observed reanalysis vs ML model vs Forecast API (forecast issued the previous day)</div><div id="a-speed"></div>
+  <div class="legend"><span><i style="background:var(--text)"></i>observed</span><span><i style="background:var(--accent)"></i>ML model</span><span><i style="background:var(--warn)"></i>Forecast API</span></div></div>
+ <div class="card"><h3>Who was closer?</h3><div class="sub">same timestamps, same observations</div><table id="a-t"></table>
+  <p class="note">The Forecast API is not ground truth, it is another forecast. Accuracy is measured against observed values only.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Hourly detail</h3><div class="sub">matched timestamps · error = forecast minus observed</div><div class="scroll"><table id="a-d"></table></div>
+<p class="note">Fair-comparison rule: every date in this section is out-of-sample. The model is trained only on data before that date, and the Forecast API is never an input to the model.</p></div>
+
+<h2>Data &amp; assumptions</h2>
+<div class="grid g22">
+ <div class="card"><h3>Data quality</h3><div class="sub">validated hourly dataset</div><table>
+  <tr><td>Rows</td><td class="n mono">26,328</td></tr><tr><td>Duplicates</td><td class="n mono">0</td></tr>
+  <tr><td>Interpolated hours (≤ 3 h gaps)</td><td class="n mono">see run</td></tr><tr><td>Units</td><td class="n mono">m/s · °</td></tr>
+  <tr><td>Height</td><td class="n mono">100 m (modelled)</td></tr><tr><td>Last observation</td><td class="n mono" id="q-last"></td></tr></table></div>
+ <div class="card"><h3>Limitations</h3><div class="sub">always visible</div>
+  <details open><summary>Read before relying on this</summary><ul style="margin:10px 0 0 18px;color:var(--muted)">
+  <li>Reanalysis data, not a site sensor</li><li>Archive lags real time by several days</li><li>Energy is curve-based, no observed generation</li><li>Yaw output is advisory only</li></ul></details></div>
+</div>
+<footer>WindKraft · advisory predictions only · no turbine commands are issued</footer></div>
+<script>
+const $=s=>document.querySelector(s);
+const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}if(window.draw)draw()}
+let _t='dark';try{_t=localStorage.getItem('theme')||'dark'}catch(e){}
+document.documentElement.dataset.theme=_t;
+function toggleTheme(){setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark')}
+// minimal SVG line/bar chart helper
+function chart(el,{w=640,h=240,series=[],bars=null,xs=[],ymin=null,ymax=null,unit='',yticks=4,area=false}){
+  const p={l:42,r:12,t:10,b:26},iw=w-p.l-p.r,ih=h-p.t-p.b;
+  const all=series.flatMap(s=>s.y.filter(v=>v!=null)).concat(bars?bars.y:[]);
+  let lo=ymin??Math.min(0,...all),hi=ymax??Math.max(...all)*1.1;if(hi===lo)hi=lo+1;
+  const X=i=>p.l+(xs.length>1?i*iw/(xs.length-1):iw/2),Y=v=>p.t+ih-(v-lo)/(hi-lo)*ih;
+  let s=`<svg viewBox="0 0 ${w} ${h}" role="img">`;
+  for(let k=0;k<=yticks;k++){const v=lo+(hi-lo)*k/yticks,y=Y(v);s+=`<line x1="${p.l}" x2="${w-p.r}" y1="${y}" y2="${y}" stroke="${cssv('--grid')}"/><text x="${p.l-8}" y="${y+3}" text-anchor="end">${v.toFixed(v%1?1:0)}</text>`}
+  const step=Math.ceil(xs.length/8);xs.forEach((x,i)=>{if(i%step===0)s+=`<text x="${X(i)}" y="${h-8}" text-anchor="middle">${x}</text>`});
+  if(bars){const bw=Math.max(3,iw/xs.length*.6);bars.y.forEach((v,i)=>{s+=`<rect x="${X(i)-bw/2}" y="${Y(v)}" width="${bw}" height="${Math.max(0,Y(lo)-Y(v))}" rx="3" fill="${bars.color}" opacity=".85"><title>${xs[i]}: ${v}${unit}</title></rect>`})}
+  series.forEach(se=>{const pts=se.y.map((v,i)=>v==null?null:[X(i),Y(v)]).filter(Boolean);
+    if(se.dots){pts.forEach((q,i)=>s+=`<circle cx="${q[0]}" cy="${q[1]}" r="3" fill="${se.color}"><title>${xs[i]}: ${se.y[i]}${unit}</title></circle>`);return}
+    const d=pts.map((q,i)=>(i?'L':'M')+q[0].toFixed(1)+' '+q[1].toFixed(1)).join('');
+    if(area)s+=`<path d="${d}L${pts.at(-1)[0]} ${Y(lo)}L${pts[0][0]} ${Y(lo)}Z" fill="${se.color}" opacity=".10"/>`;
+    s+=`<path d="${d}" fill="none" stroke="${se.color}" stroke-width="2" stroke-linejoin="round" ${se.dash?'stroke-dasharray="5 4"':''}/>`;
+    if(se.marks)pts.forEach((q,i)=>s+=`<circle cx="${q[0]}" cy="${q[1]}" r="3.2" fill="${se.color}"><title>${se.name} ${xs[i]}: ${se.y[i]}${unit}</title></circle>`)});
+  el.innerHTML=s+'</svg>'}
+function compass(el,deg,ok){const c=100,r=78;let s=`<svg viewBox="0 0 200 200" style="max-width:220px;margin:auto">
+<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${cssv('--border')}" stroke-width="1.5"/><circle cx="${c}" cy="${c}" r="${r-24}" fill="none" stroke="${cssv('--grid')}"/>`;
+  for(let a=0;a<360;a+=30){const t=a*Math.PI/180,l=a%90?4:9;s+=`<line x1="${c+Math.sin(t)*r}" y1="${c-Math.cos(t)*r}" x2="${c+Math.sin(t)*(r-l)}" y2="${c-Math.cos(t)*(r-l)}" stroke="${cssv('--muted')}"/>`}
+  [['N',0],['E',90],['S',180],['W',270]].forEach(([n,a])=>{const t=a*Math.PI/180;s+=`<text x="${c+Math.sin(t)*(r+14)}" y="${c-Math.cos(t)*(r+14)+4}" text-anchor="middle">${n}</text>`});
+  const col=ok?cssv('--accent'):cssv('--muted');
+  s+=`<g transform="rotate(${deg} ${c} ${c})"><path d="M${c} ${c-r+8}L${c+7} ${c+6}L${c} ${c-2}L${c-7} ${c+6}Z" fill="${col}"/><line x1="${c}" y1="${c-2}" x2="${c}" y2="${c+r-30}" stroke="${col}" stroke-opacity=".35" stroke-dasharray="3 4"/></g>
+<circle cx="${c}" cy="${c}" r="4" fill="${col}"/></svg>`;el.innerHTML=s}
+
+const D={"cmp": {"obs_speed": [5.66, 5.95, 6.52, 4.61, 4.27, 4.05, 3.6, 3.27, 3.69, 3.97, 3.96, 4.21, 4.27, 4.69, 3.65, 3.25, 2.55, 2.83, 2.84, 3.76, 5.55, 4.09, 3.2, 3.66], "obs_dir": [62, 70, 79, 77, 74, 77, 76, 65, 50, 48, 47, 45, 38, 31, 33, 45, 42, 48, 66, 60, 64, 57, 25, 39], "api_speed": [5.39, 5.31, 5.77, 4.08, 3.83, 3.43, 3.05, 2.72, 2.73, 3.35, 3.99, 3.87, 3.71, 3.89, 3.87, 3.76, 4.19, 4.27, 4.41, 4.27, 3.45, 2.9, 3.59, 4.15], "api_dir": [73, 72, 71, 71, 78, 77, 80, 70, 50, 38, 30, 27, 44, 46, 40, 50, 50, 57, 72, 69, 60, 11, 16, 36], "date": "2026-10-22"}, "rows": [{"t": "05:30", "lead": 1, "speed": 5.22, "dir": 58, "conf": 1.0, "ok": true, "head": 58, "note": "track predicted wind direction", "kw": 709, "kwh": 709}, {"t": "06:30", "lead": 2, "speed": 5.31, "dir": 61, "conf": 1.0, "ok": true, "head": 58, "note": "hold: within deadband", "kw": 746, "kwh": 746}, {"t": "07:30", "lead": 3, "speed": 5.29, "dir": 64, "conf": 1.0, "ok": true, "head": 58, "note": "hold: within deadband", "kw": 739, "kwh": 739}, {"t": "08:30", "lead": 4, "speed": 5.33, "dir": 65, "conf": 1.0, "ok": true, "head": 58, "note": "hold: within deadband", "kw": 757, "kwh": 757}, {"t": "09:30", "lead": 5, "speed": 3.83, "dir": 67, "conf": 1.0, "ok": true, "head": 67, "note": "track predicted wind direction", "kw": 244, "kwh": 244}, {"t": "10:30", "lead": 6, "speed": 3.21, "dir": 69, "conf": 0.99, "ok": true, "head": 67, "note": "hold: within deadband", "kw": 0, "kwh": 0}, {"t": "11:30", "lead": 7, "speed": 2.98, "dir": 70, "conf": 0.97, "ok": false, "head": 67, "note": "hold: low confidence or below cut-in/low-speed", "kw": 0, "kwh": 0}, {"t": "12:30", "lead": 8, "speed": 2.89, "dir": 71, "conf": 0.93, "ok": false, "head": 67, "note": "hold: low confidence or below cut-in/low-speed", "kw": 0, "kwh": 0}, {"t": "13:30", "lead": 9, "speed": 3.01, "dir": 68, "conf": 0.93, "ok": true, "head": 67, "note": "hold: within deadband", "kw": 0, "kwh": 0}, {"t": "14:30", "lead": 10, "speed": 3.1, "dir": 60, "conf": 0.87, "ok": true, "head": 67, "note": "hold: within deadband", "kw": 0, "kwh": 0}, {"t": "15:30", "lead": 11, "speed": 3.23, "dir": 56, "conf": 0.89, "ok": true, "head": 56, "note": "track predicted wind direction", "kw": 0, "kwh": 0}, {"t": "16:30", "lead": 12, "speed": 3.43, "dir": 50, "conf": 0.84, "ok": true, "head": 56, "note": "hold: within deadband", "kw": 163, "kwh": 163}, {"t": "17:30", "lead": 13, "speed": 3.48, "dir": 41, "conf": 0.79, "ok": true, "head": 41, "note": "track predicted wind direction", "kw": 170, "kwh": 170}, {"t": "18:30", "lead": 14, "speed": 3.42, "dir": 27, "conf": 0.7, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 162, "kwh": 162}, {"t": "19:30", "lead": 15, "speed": 3.33, "dir": 18, "conf": 0.7, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 150, "kwh": 150}, {"t": "20:30", "lead": 16, "speed": 3.61, "dir": 7, "conf": 0.66, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 195, "kwh": 195}, {"t": "21:30", "lead": 17, "speed": 3.88, "dir": 5, "conf": 0.63, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 256, "kwh": 256}, {"t": "22:30", "lead": 18, "speed": 3.79, "dir": 357, "conf": 0.65, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 232, "kwh": 232}, {"t": "23:30", "lead": 19, "speed": 4.18, "dir": 15, "conf": 0.64, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 336, "kwh": 336}, {"t": "00:30", "lead": 20, "speed": 4.42, "dir": 29, "conf": 0.68, "ok": false, "head": 41, "note": "hold: low confidence or below cut-in/low-speed", "kw": 414, "kwh": 414}, {"t": "01:30", "lead": 21, "speed": 4.95, "dir": 42, "conf": 0.79, "ok": true, "head": 41, "note": "hold: within deadband", "kw": 603, "kwh": 603}, {"t": "02:30", "lead": 22, "speed": 5.06, "dir": 49, "conf": 0.84, "ok": true, "head": 49, "note": "track predicted wind direction", "kw": 646, "kwh": 646}, {"t": "03:30", "lead": 23, "speed": 5.07, "dir": 55, "conf": 0.87, "ok": true, "head": 49, "note": "hold: within deadband", "kw": 649, "kwh": 649}, {"t": "04:30", "lead": 24, "speed": 4.93, "dir": 58, "conf": 0.93, "ok": true, "head": 58, "note": "track predicted wind direction", "kw": 598, "kwh": 598}], "lead": [{"model": "Persistence", "lead_h": 1, "speed_MAE": 0.558, "speed_RMSE": 0.841, "dir_CMAE_all": 13.198, "dir_CMAE_fast": 10.418}, {"model": "Persistence", "lead_h": 6, "speed_MAE": 1.241, "speed_RMSE": 1.565, "dir_CMAE_all": 32.837, "dir_CMAE_fast": 29.349}, {"model": "Persistence", "lead_h": 12, "speed_MAE": 1.242, "speed_RMSE": 1.582, "dir_CMAE_all": 37.384, "dir_CMAE_fast": 32.479}, {"model": "Persistence", "lead_h": 24, "speed_MAE": 1.041, "speed_RMSE": 1.398, "dir_CMAE_all": 30.544, "dir_CMAE_fast": 24.574}, {"model": "Seasonal naive (24h)", "lead_h": 1, "speed_MAE": 0.973, "speed_RMSE": 1.29, "dir_CMAE_all": 29.119, "dir_CMAE_fast": 22.152}, {"model": "Seasonal naive (24h)", "lead_h": 6, "speed_MAE": 1.038, "speed_RMSE": 1.396, "dir_CMAE_all": 30.413, "dir_CMAE_fast": 24.366}, {"model": "Seasonal naive (24h)", "lead_h": 12, "speed_MAE": 1.039, "speed_RMSE": 1.396, "dir_CMAE_all": 30.389, "dir_CMAE_fast": 24.379}, {"model": "Seasonal naive (24h)", "lead_h": 24, "speed_MAE": 1.041, "speed_RMSE": 1.398, "dir_CMAE_all": 30.544, "dir_CMAE_fast": 24.574}, {"model": "SARIMAX", "lead_h": 1, "speed_MAE": 0.57, "speed_RMSE": 0.835, "dir_CMAE_all": 12.941, "dir_CMAE_fast": 10.225}, {"model": "SARIMAX", "lead_h": 6, "speed_MAE": 1.012, "speed_RMSE": 1.287, "dir_CMAE_all": 32.608, "dir_CMAE_fast": 29.414}, {"model": "SARIMAX", "lead_h": 12, "speed_MAE": 1.049, "speed_RMSE": 1.353, "dir_CMAE_all": 38.534, "dir_CMAE_fast": 35.531}, {"model": "SARIMAX", "lead_h": 24, "speed_MAE": 1.079, "speed_RMSE": 1.385, "dir_CMAE_all": 48.366, "dir_CMAE_fast": 46.561}, {"model": "LightGBM", "lead_h": 1, "speed_MAE": 0.51, "speed_RMSE": 0.727, "dir_CMAE_all": 11.811, "dir_CMAE_fast": 8.917}, {"model": "LightGBM", "lead_h": 6, "speed_MAE": 0.905, "speed_RMSE": 1.19, "dir_CMAE_all": 24.572, "dir_CMAE_fast": 20.477}, {"model": "LightGBM", "lead_h": 12, "speed_MAE": 0.897, "speed_RMSE": 1.173, "dir_CMAE_all": 26.742, "dir_CMAE_fast": 21.589}, {"model": "LightGBM", "lead_h": 24, "speed_MAE": 0.931, "speed_RMSE": 1.209, "dir_CMAE_all": 29.852, "dir_CMAE_fast": 24.322}], "summary": [{"model": "Persistence", "MAE@1h": 0.558, "MAE@6h": 1.241, "MAE@12h": 1.242, "MAE@24h": 1.041, "RMSE@1h": 0.841, "RMSE@6h": 1.565, "RMSE@12h": 1.582, "RMSE@24h": 1.398, "MAE_1-24h": 1.184, "RMSE_1-24h": 1.52, "dirMAE_fast@1h": 10.418, "dirMAE_fast@6h": 29.349, "dirMAE_fast@12h": 32.479, "dirMAE_fast@24h": 24.574, "dirMAE_all_1-24h": 32.751, "dirMAE_fast_1-24h": 27.964}, {"model": "Seasonal naive (24h)", "MAE@1h": 0.973, "MAE@6h": 1.038, "MAE@12h": 1.039, "MAE@24h": 1.041, "RMSE@1h": 1.29, "RMSE@6h": 1.396, "RMSE@12h": 1.396, "RMSE@24h": 1.398, "MAE_1-24h": 1.04, "RMSE_1-24h": 1.373, "dirMAE_fast@1h": 22.152, "dirMAE_fast@6h": 24.366, "dirMAE_fast@12h": 24.379, "dirMAE_fast@24h": 24.574, "dirMAE_all_1-24h": 28.156, "dirMAE_fast_1-24h": 22.84}, {"model": "SARIMAX", "MAE@1h": 0.57, "MAE@6h": 1.012, "MAE@12h": 1.049, "MAE@24h": 1.079, "RMSE@1h": 0.835, "RMSE@6h": 1.286, "RMSE@12h": 1.353, "RMSE@24h": 1.385, "MAE_1-24h": 0.994, "RMSE_1-24h": 1.29, "dirMAE_fast@1h": 10.225, "dirMAE_fast@6h": 29.414, "dirMAE_fast@12h": 35.531, "dirMAE_fast@24h": 46.561, "dirMAE_all_1-24h": 36.882, "dirMAE_fast_1-24h": 33.97}, {"model": "LightGBM", "MAE@1h": 0.51, "MAE@6h": 0.905, "MAE@12h": 0.898, "MAE@24h": 0.931, "RMSE@1h": 0.727, "RMSE@6h": 1.19, "RMSE@12h": 1.173, "RMSE@24h": 1.209, "MAE_1-24h": 0.885, "RMSE_1-24h": 1.143, "dirMAE_fast@1h": 8.917, "dirMAE_fast@6h": 20.477, "dirMAE_fast@12h": 21.589, "dirMAE_fast@24h": 24.322, "dirMAE_all_1-24h": 25.426, "dirMAE_fast_1-24h": 20.448}], "origin": "2026-10-21 23:00:00", "total": 7768};
+const R=D.rows,xs=R.map(r=>r.t);
+const sum=a=>a.reduce((x,y)=>x+y,0);
+$('#origin').textContent='origin '+D.origin.slice(0,16)+' UTC';$('#q-last').textContent=D.origin.slice(0,16);
+const rel=R.filter(r=>r.ok).length,peak=Math.max(...R.map(r=>r.kw));
+$('#kpis').innerHTML=[['Expected energy',D.total.toLocaleString(),'kWh'],['Capacity factor',(D.total/(3300*24)*100).toFixed(1),'%'],
+['Peak power',peak.toLocaleString(),'kW'],['Mean speed',(sum(R.map(r=>r.speed))/R.length).toFixed(1),'m/s']]
+.map(k=>`<div class="card kpi"><div class="l">${k[0]}</div><div class="v mono">${k[1]}<span class="u">${k[2]}</span></div></div>`).join('');
+const next=R.find(r=>r.head!=null);$('#cmp-sub').textContent=rel+' of 24 hours have reliable direction';
+$('#cmp-deg').textContent=next.head+'°';$('#cmp-b').textContent='track wind';
+const leads=[...new Set(D.lead.map(r=>r.lead_h))],models=[...new Set(D.lead.map(r=>r.model))];
+const col={'Persistence':'#8A99AD','Seasonal naive (24h)':'#FBBF24','SARIMAX':'#A78BFA','LightGBM':'#22D3EE'};
+$('#m-leg').innerHTML=models.map(m=>`<span style="margin-right:16px"><i style="display:inline-block;width:10px;height:3px;background:${col[m]};margin-right:6px;vertical-align:middle"></i>${m}</span>`).join('');
+window.draw=function(){
+ chart($('#c-speed'),{xs,series:[{name:'speed',y:R.map(r=>r.speed),color:cssv('--accent')},{name:'cut-in',y:R.map(_=>3),color:cssv('--muted'),dash:true}],area:true,unit:' m/s',ymin:0});
+ chart($('#c-dir'),{xs,series:[{name:'dir',y:R.map(r=>r.ok?r.dir:null),color:cssv('--accent2'),dots:true}],unit:'°',ymin:0,ymax:360,yticks:4});
+ chart($('#c-conf'),{xs,bars:{y:R.map(r=>r.conf),color:cssv('--accent')},series:[{name:'thr',y:R.map(_=>.75),color:cssv('--warn'),dash:true}],ymin:0,ymax:1,unit:''});
+ chart($('#c-pow'),{xs,h:220,bars:{y:R.map(r=>r.kwh),color:cssv('--accent2')},series:[],unit:' kWh',ymin:0});
+ compass($('#compass'),next.head,true);
+ const L=(k,el)=>chart($(el),{w:420,h:220,xs:leads,series:models.map(m=>({name:m,y:leads.map(l=>D.lead.find(r=>r.model===m&&r.lead_h===l)[k]),color:col[m],marks:true})),unit:'',ymin:0});
+ L('speed_MAE','#m-mae');L('speed_RMSE','#m-rmse');L('dir_CMAE_fast','#m-dir');
+};
+$('#t-fc').innerHTML='<thead><tr><th>Lead</th><th>Local</th><th class="n">Speed m/s</th><th class="n">Dir °</th><th class="n">Conf</th><th class="n">Heading °</th><th>Yaw note</th><th class="n">Power kW</th><th class="n">Energy kWh</th></tr></thead><tbody>'+
+ R.map(r=>`<tr><td class="mono">+${r.lead}h</td><td class="mono">${r.t}</td><td class="n mono">${r.speed.toFixed(2)}</td><td class="n mono">${r.dir}</td><td class="n mono">${r.conf.toFixed(2)}</td><td class="n mono">${r.head??'—'}</td><td><span class="badge ${r.ok?'b-g':'b-m'}">${r.note.split(':')[0]}</span> <span style="color:var(--muted)">${r.note.includes(':')?r.note.split(': ')[1]:''}</span></td><td class="n mono">${r.kw}</td><td class="n mono">${r.kwh}</td></tr>`).join('')+'</tbody>';
+const S=D.summary,best=Math.min(...S.map(r=>r['RMSE_1-24h']||9));
+$('#t-m').innerHTML='<thead><tr><th>Model</th><th class="n">MAE@1h</th><th class="n">MAE@6h</th><th class="n">MAE@12h</th><th class="n">MAE@24h</th><th class="n">RMSE 1–24h</th><th class="n">Dir MAE (≥3 m/s)</th></tr></thead><tbody>'+
+ S.map(r=>`<tr style="${r.model==='LightGBM'?'color:var(--accent)':''}"><td>${r.model} ${r.model==='LightGBM'?'<span class="badge b-g">selected</span>':''}</td><td class="n mono">${r['MAE@1h']}</td><td class="n mono">${r['MAE@6h']}</td><td class="n mono">${r['MAE@12h']}</td><td class="n mono">${r['MAE@24h']}</td><td class="n mono">${r['RMSE_1-24h']}</td><td class="n mono">${r['dirMAE_fast_1-24h']}</td></tr>`).join('')+'</tbody>';
+
+const C=D.cmp,circ=(a,b)=>Math.abs(((a-b+180)%360+360)%360-180);
+const mm=(f,o)=>({mae:f.reduce((s,v,i)=>s+Math.abs(v-o[i]),0)/f.length,rmse:Math.sqrt(f.reduce((s,v,i)=>s+(v-o[i])**2,0)/f.length)});
+const mSp=R.map(r=>r.speed),mDr=R.map(r=>r.dir);
+const mA=mm(mSp,C.obs_speed),aA=mm(C.api_speed,C.obs_speed);
+const mD=mDr.reduce((s,v,i)=>s+circ(v,C.obs_dir[i]),0)/24,aD=C.api_dir.reduce((s,v,i)=>s+circ(v,C.obs_dir[i]),0)/24;
+$('#a-date').textContent=C.date;
+const cls=(a,b)=>a<b?'b-g':'b-m';
+$('#a-t').innerHTML=`<thead><tr><th>Metric</th><th class="n">ML model</th><th class="n">Forecast API</th></tr></thead><tbody>
+<tr><td>Speed MAE (m/s)</td><td class="n mono">${mA.mae.toFixed(2)} <span class="badge ${cls(mA.mae,aA.mae)}">${mA.mae<aA.mae?'closer':''}</span></td><td class="n mono">${aA.mae.toFixed(2)} <span class="badge ${cls(aA.mae,mA.mae)}">${aA.mae<mA.mae?'closer':''}</span></td></tr>
+<tr><td>Speed RMSE (m/s)</td><td class="n mono">${mA.rmse.toFixed(2)}</td><td class="n mono">${aA.rmse.toFixed(2)}</td></tr>
+<tr><td>Direction circular MAE (°)</td><td class="n mono">${mD.toFixed(1)} <span class="badge ${cls(mD,aD)}">${mD<aD?'closer':''}</span></td><td class="n mono">${aD.toFixed(1)} <span class="badge ${cls(aD,mD)}">${aD<mD?'closer':''}</span></td></tr></tbody>`;
+window._acc=()=>chart($('#a-speed'),{xs,series:[{name:'observed',y:C.obs_speed,color:cssv('--text')},{name:'ML model',y:mSp,color:cssv('--accent'),marks:true},{name:'Forecast API',y:C.api_speed,color:cssv('--warn'),dash:true}],unit:' m/s',ymin:0});
+$('#a-d').innerHTML='<thead><tr><th>Local</th><th class="n">Observed m/s</th><th class="n">Model m/s</th><th class="n">API m/s</th><th class="n">Model err</th><th class="n">API err</th><th class="n">Obs dir °</th><th class="n">Model dir err°</th><th class="n">API dir err°</th></tr></thead><tbody>'+
+ R.map((r,i)=>`<tr><td class="mono">${r.t}</td><td class="n mono">${C.obs_speed[i].toFixed(2)}</td><td class="n mono">${r.speed.toFixed(2)}</td><td class="n mono">${C.api_speed[i].toFixed(2)}</td><td class="n mono">${(r.speed-C.obs_speed[i]).toFixed(2)}</td><td class="n mono">${(C.api_speed[i]-C.obs_speed[i]).toFixed(2)}</td><td class="n mono">${C.obs_dir[i]}</td><td class="n mono">${circ(r.dir,C.obs_dir[i]).toFixed(0)}</td><td class="n mono">${circ(C.api_dir[i],C.obs_dir[i]).toFixed(0)}</td></tr>`).join('')+'</tbody>';
+const _d=window.draw;window.draw=function(){_d();window._acc()};
+draw();
+</script></body></html>

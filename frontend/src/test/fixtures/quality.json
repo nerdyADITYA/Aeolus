@@ -1,0 +1,75 @@
+{
+ "validation": {
+  "rows_raw": 26328,
+  "duplicate_timestamps": 0,
+  "timestamps_monotonic": true,
+  "expected_hours": 26328,
+  "missing_hours_absent_timestamps": 0,
+  "off_hour_timestamps": 0,
+  "units": {
+   "wind_speed_100m": "m/s",
+   "wind_direction_100m": "\u00b0",
+   "wind_speed_10m": "m/s",
+   "wind_direction_10m": "\u00b0",
+   "temperature_2m": "\u00b0C",
+   "surface_pressure": "hPa",
+   "relative_humidity_2m": "%",
+   "cloud_cover": "%"
+  },
+  "null_counts": {
+   "wind_speed_100m": 0,
+   "wind_direction_100m": 0,
+   "wind_speed_10m": 0,
+   "wind_direction_10m": 0,
+   "temperature_2m": 0,
+   "surface_pressure": 0,
+   "relative_humidity_2m": 0,
+   "cloud_cover": 0
+  },
+  "speed_100m_range": [
+   0.05,
+   16.2
+  ],
+  "direction_100m_range": [
+   0.0,
+   360.0
+  ],
+  "negative_speeds": 0,
+  "implausible_speeds_gt_60": 0,
+  "direction_outside_0_360": 0,
+  "shear_alpha_10_to_100m": 0.23976033892505852,
+  "height_check": "variable=wind_speed_100m (100 m above ground, modelled). Median shear exponent 10->100 m = 0.24 (plausible 0.1-0.5: True)",
+  "grid_cell_offset_km": 3.11,
+  "last_valid_timestamp_utc": "2026-10-21 23:00:00",
+  "data_age_days": 4.4,
+  "trailing_null_hours": 0,
+  "stale": false
+ },
+ "cleaning": {
+  "rows": 26328,
+  "start_utc": "2023-10-21 00:00:00",
+  "end_utc": "2026-10-21 23:00:00",
+  "interpolated_hours": 0,
+  "remaining_missing_hours": 0,
+  "remaining_gaps": 0
+ },
+ "request": {
+  "latitude": 23.0225,
+  "longitude": 72.5714,
+  "start_date": "2023-10-21",
+  "end_date": "2026-10-21",
+  "hourly": "wind_speed_100m,wind_direction_100m,wind_speed_10m,wind_direction_10m,temperature_2m,surface_pressure,relative_humidity_2m,cloud_cover",
+  "timezone": "UTC",
+  "wind_speed_unit": "ms"
+ },
+ "grid_cell": {
+  "latitude": 23.022846,
+  "longitude": 72.60188,
+  "elevation": 53.0
+ },
+ "feature_leakage_test": {
+  "passed": true,
+  "rows_checked": 8
+ },
+ "fetched_at": "2026-10-26T08:40:43"
+}

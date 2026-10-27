@@ -1,0 +1,19 @@
+# Exact versions of the direct dependencies used during development and testing.
+fastapi==0.135.3
+uvicorn==0.44.0
+pydantic==2.13.1
+pydantic-settings==2.15.0
+pandas==3.0.2
+numpy==2.4.4
+requests==2.34.2
+pyarrow==25.0.1
+joblib==1.5.3
+scikit-learn==1.8.0
+statsmodels==0.15.0
+lightgbm==4.7.0
+turbine-models==0.2.2
+pyyaml==6.0.3
+sqlalchemy==2.0.50
+apscheduler==3.11.3
+pytest==9.1.1
+httpx==0.28.1

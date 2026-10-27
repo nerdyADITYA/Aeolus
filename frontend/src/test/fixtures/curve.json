@@ -1,0 +1,427 @@
+{
+ "turbine": {
+  "name": "2023NREL_Bespoke_3.3MW_148",
+  "group": "onshore",
+  "rated_kw": 3300.0,
+  "cut_in_ms": 3.25,
+  "cut_out_ms": 25.0,
+  "hub_height_m": 100.0,
+  "rotor_diameter_m": 148,
+  "curve_type": "theoretical",
+  "origin": "reference model",
+  "package_version": "0.2.2",
+  "checks": {
+   "wind speeds strictly increasing": true,
+   "power non-negative (tiny standby dips tolerated)": true,
+   "peak power == spec rated power (within 1%)": true,
+   "curve starts at or just above cut-in (<= 0.5 m/s)": true,
+   "hub height known": true
+  }
+ },
+ "curve": [
+  {
+   "wind_speed_ms": 0.0,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 0.25,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 0.5,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 0.75,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 1.0,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 1.25,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 1.5,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 1.75,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 2.0,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 2.25,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 2.5,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 2.75,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 3.0,
+   "power_kw": 0.0
+  },
+  {
+   "wind_speed_ms": 3.25,
+   "power_kw": 138.0
+  },
+  {
+   "wind_speed_ms": 3.5,
+   "power_kw": 173.0
+  },
+  {
+   "wind_speed_ms": 3.75,
+   "power_kw": 223.0
+  },
+  {
+   "wind_speed_ms": 4.0,
+   "power_kw": 286.0
+  },
+  {
+   "wind_speed_ms": 4.25,
+   "power_kw": 358.0
+  },
+  {
+   "wind_speed_ms": 4.5,
+   "power_kw": 440.0
+  },
+  {
+   "wind_speed_ms": 4.75,
+   "power_kw": 529.0
+  },
+  {
+   "wind_speed_ms": 5.0,
+   "power_kw": 623.0
+  },
+  {
+   "wind_speed_ms": 5.25,
+   "power_kw": 722.0
+  },
+  {
+   "wind_speed_ms": 5.5,
+   "power_kw": 827.0
+  },
+  {
+   "wind_speed_ms": 5.75,
+   "power_kw": 941.0
+  },
+  {
+   "wind_speed_ms": 6.0,
+   "power_kw": 1069.0
+  },
+  {
+   "wind_speed_ms": 6.25,
+   "power_kw": 1211.0
+  },
+  {
+   "wind_speed_ms": 6.5,
+   "power_kw": 1367.0
+  },
+  {
+   "wind_speed_ms": 6.75,
+   "power_kw": 1535.0
+  },
+  {
+   "wind_speed_ms": 7.0,
+   "power_kw": 1715.0
+  },
+  {
+   "wind_speed_ms": 7.25,
+   "power_kw": 1903.0
+  },
+  {
+   "wind_speed_ms": 7.5,
+   "power_kw": 2096.0
+  },
+  {
+   "wind_speed_ms": 7.75,
+   "power_kw": 2290.0
+  },
+  {
+   "wind_speed_ms": 8.0,
+   "power_kw": 2482.0
+  },
+  {
+   "wind_speed_ms": 8.25,
+   "power_kw": 2666.0
+  },
+  {
+   "wind_speed_ms": 8.5,
+   "power_kw": 2835.0
+  },
+  {
+   "wind_speed_ms": 8.75,
+   "power_kw": 2979.0
+  },
+  {
+   "wind_speed_ms": 9.0,
+   "power_kw": 3088.0
+  },
+  {
+   "wind_speed_ms": 9.25,
+   "power_kw": 3159.0
+  },
+  {
+   "wind_speed_ms": 9.5,
+   "power_kw": 3198.0
+  },
+  {
+   "wind_speed_ms": 9.75,
+   "power_kw": 3219.0
+  },
+  {
+   "wind_speed_ms": 10.0,
+   "power_kw": 3232.0
+  },
+  {
+   "wind_speed_ms": 10.25,
+   "power_kw": 3247.0
+  },
+  {
+   "wind_speed_ms": 10.5,
+   "power_kw": 3265.0
+  },
+  {
+   "wind_speed_ms": 10.75,
+   "power_kw": 3282.0
+  },
+  {
+   "wind_speed_ms": 11.0,
+   "power_kw": 3294.0
+  },
+  {
+   "wind_speed_ms": 11.25,
+   "power_kw": 3301.0
+  },
+  {
+   "wind_speed_ms": 11.5,
+   "power_kw": 3303.0
+  },
+  {
+   "wind_speed_ms": 11.75,
+   "power_kw": 3302.0
+  },
+  {
+   "wind_speed_ms": 12.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 12.25,
+   "power_kw": 3299.0
+  },
+  {
+   "wind_speed_ms": 12.5,
+   "power_kw": 3299.0
+  },
+  {
+   "wind_speed_ms": 12.75,
+   "power_kw": 3299.0
+  },
+  {
+   "wind_speed_ms": 13.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 13.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 13.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 13.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 14.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 14.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 14.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 14.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 15.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 15.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 15.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 15.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 16.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 16.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 16.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 16.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 17.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 17.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 17.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 17.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 18.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 18.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 18.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 18.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 19.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 19.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 19.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 19.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 20.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 20.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 20.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 20.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 21.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 21.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 21.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 21.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 22.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 22.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 22.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 22.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 23.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 23.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 23.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 23.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 24.0,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 24.25,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 24.5,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 24.75,
+   "power_kw": 3300.0
+  },
+  {
+   "wind_speed_ms": 25.0,
+   "power_kw": 3300.0
+  }
+ ]
+}

@@ -1,0 +1,28 @@
+{
+  "request": {
+    "latitude": 23.0225,
+    "longitude": 72.5714,
+    "start_date": "2023-10-21",
+    "end_date": "2026-10-21",
+    "hourly": "wind_speed_100m,wind_direction_100m,wind_speed_10m,wind_direction_10m,temperature_2m,surface_pressure,relative_humidity_2m,cloud_cover",
+    "timezone": "UTC",
+    "wind_speed_unit": "ms"
+  },
+  "response_meta": {
+    "latitude": 23.022846,
+    "longitude": 72.60188,
+    "elevation": 53.0,
+    "timezone": "GMT",
+    "hourly_units": {
+      "time": "iso8601",
+      "wind_speed_100m": "m/s",
+      "wind_direction_100m": "\u00b0",
+      "wind_speed_10m": "m/s",
+      "wind_direction_10m": "\u00b0",
+      "temperature_2m": "\u00b0C",
+      "surface_pressure": "hPa",
+      "relative_humidity_2m": "%",
+      "cloud_cover": "%"
+    }
+  }
+}

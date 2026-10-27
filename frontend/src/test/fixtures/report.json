@@ -1,0 +1,1018 @@
+{
+ "ml_name": "LightGBM",
+ "split": {
+  "train": [
+   "2023-10-21 00:00:00",
+   "2026-02-23 23:00:00"
+  ],
+  "validation": [
+   "2026-02-24 00:00:00",
+   "2026-05-24 23:00:00"
+  ],
+  "test": [
+   "2026-05-25 00:00:00",
+   "2026-10-21 23:00:00"
+  ],
+  "val_origins": 356,
+  "test_origins": 596
+ },
+ "test_table": [
+  {
+   "model": "Persistence",
+   "MAE@1h": 0.5576006711,
+   "MAE@6h": 1.2410738255,
+   "MAE@12h": 1.2421644295,
+   "MAE@24h": 1.0406040268,
+   "RMSE@1h": 0.8408974712,
+   "RMSE@6h": 1.5647329682,
+   "RMSE@12h": 1.5824095445,
+   "RMSE@24h": 1.3977855209,
+   "MAE_1-24h": 1.183623462,
+   "RMSE_1-24h": 1.520228754,
+   "dirMAE_fast@1h": 10.4184549356,
+   "dirMAE_fast@6h": 29.3488372093,
+   "dirMAE_fast@12h": 32.4788135593,
+   "dirMAE_fast@24h": 24.5741525424,
+   "dirMAE_all_1-24h": 32.7510486577,
+   "dirMAE_fast_1-24h": 27.9639886038
+  },
+  {
+   "model": "Seasonal naive (24h)",
+   "MAE@1h": 0.9725503356,
+   "MAE@6h": 1.0383724832,
+   "MAE@12h": 1.0387416107,
+   "MAE@24h": 1.0406040268,
+   "RMSE@1h": 1.289932624,
+   "RMSE@6h": 1.3957651074,
+   "RMSE@12h": 1.3960004591,
+   "RMSE@24h": 1.3977855209,
+   "MAE_1-24h": 1.040192953,
+   "RMSE_1-24h": 1.3730961777,
+   "dirMAE_fast@1h": 22.152360515,
+   "dirMAE_fast@6h": 24.3657505285,
+   "dirMAE_fast@12h": 24.3792372881,
+   "dirMAE_fast@24h": 24.5741525424,
+   "dirMAE_all_1-24h": 28.1563199105,
+   "dirMAE_fast_1-24h": 22.8397554153
+  },
+  {
+   "model": "SARIMAX",
+   "MAE@1h": 0.5700287075,
+   "MAE@6h": 1.0118629317,
+   "MAE@12h": 1.0488383923,
+   "MAE@24h": 1.079268525,
+   "RMSE@1h": 0.8348181662,
+   "RMSE@6h": 1.2865181491,
+   "RMSE@12h": 1.3525980268,
+   "RMSE@24h": 1.3849531398,
+   "MAE_1-24h": 0.9944571093,
+   "RMSE_1-24h": 1.2900385841,
+   "dirMAE_fast@1h": 10.2245851776,
+   "dirMAE_fast@6h": 29.4139244772,
+   "dirMAE_fast@12h": 35.5313934804,
+   "dirMAE_fast@24h": 46.5611777631,
+   "dirMAE_all_1-24h": 36.8822686587,
+   "dirMAE_fast_1-24h": 33.970078469
+  },
+  {
+   "model": "LightGBM",
+   "MAE@1h": 0.5100752178,
+   "MAE@6h": 0.9051459842,
+   "MAE@12h": 0.8974865501,
+   "MAE@24h": 0.9306900153,
+   "RMSE@1h": 0.7269478616,
+   "RMSE@6h": 1.1901806072,
+   "RMSE@12h": 1.1725918947,
+   "RMSE@24h": 1.2086503883,
+   "MAE_1-24h": 0.8852249949,
+   "RMSE_1-24h": 1.1427626484,
+   "dirMAE_fast@1h": 8.9169405374,
+   "dirMAE_fast@6h": 20.4773147484,
+   "dirMAE_fast@12h": 21.5888713068,
+   "dirMAE_fast@24h": 24.3223638139,
+   "dirMAE_all_1-24h": 25.4263143589,
+   "dirMAE_fast_1-24h": 20.4484329393
+  }
+ ],
+ "val_table": [],
+ "by_lead": {
+  "Persistence": [
+   {
+    "lead_h": 1,
+    "speed_MAE": 0.5576006711,
+    "speed_RMSE": 0.8408974712,
+    "dir_CMAE_all": 13.1979865772,
+    "dir_CMAE_fast": 10.4184549356
+   },
+   {
+    "lead_h": 2,
+    "speed_MAE": 0.8398657718,
+    "speed_RMSE": 1.1101856063,
+    "dir_CMAE_all": 21.3590604027,
+    "dir_CMAE_fast": 18.6431623932
+   },
+   {
+    "lead_h": 3,
+    "speed_MAE": 1.0316275168,
+    "speed_RMSE": 1.3340998146,
+    "dir_CMAE_all": 26.2768456376,
+    "dir_CMAE_fast": 22.1070663812
+   },
+   {
+    "lead_h": 4,
+    "speed_MAE": 1.1213758389,
+    "speed_RMSE": 1.4388376181,
+    "dir_CMAE_all": 29.4194630872,
+    "dir_CMAE_fast": 25.1281512605
+   },
+   {
+    "lead_h": 5,
+    "speed_MAE": 1.1605033557,
+    "speed_RMSE": 1.5080988298,
+    "dir_CMAE_all": 30.4362416107,
+    "dir_CMAE_fast": 26.8333333333
+   },
+   {
+    "lead_h": 6,
+    "speed_MAE": 1.2410738255,
+    "speed_RMSE": 1.5647329682,
+    "dir_CMAE_all": 32.8372483221,
+    "dir_CMAE_fast": 29.3488372093
+   },
+   {
+    "lead_h": 7,
+    "speed_MAE": 1.2767449664,
+    "speed_RMSE": 1.5908388104,
+    "dir_CMAE_all": 34.5318791946,
+    "dir_CMAE_fast": 29.4120171674
+   },
+   {
+    "lead_h": 8,
+    "speed_MAE": 1.3356375839,
+    "speed_RMSE": 1.6570003018,
+    "dir_CMAE_all": 36.7516778523,
+    "dir_CMAE_fast": 32.6581196581
+   },
+   {
+    "lead_h": 9,
+    "speed_MAE": 1.2865436242,
+    "speed_RMSE": 1.6195284756,
+    "dir_CMAE_all": 38.3741610738,
+    "dir_CMAE_fast": 33.4453961456
+   },
+   {
+    "lead_h": 10,
+    "speed_MAE": 1.2514261745,
+    "speed_RMSE": 1.5656914655,
+    "dir_CMAE_all": 39.0167785235,
+    "dir_CMAE_fast": 32.1894736842
+   },
+   {
+    "lead_h": 11,
+    "speed_MAE": 1.2393456376,
+    "speed_RMSE": 1.584140516,
+    "dir_CMAE_all": 37.3775167785,
+    "dir_CMAE_fast": 32.2600422833
+   },
+   {
+    "lead_h": 12,
+    "speed_MAE": 1.2421644295,
+    "speed_RMSE": 1.5824095445,
+    "dir_CMAE_all": 37.3842281879,
+    "dir_CMAE_fast": 32.4788135593
+   },
+   {
+    "lead_h": 13,
+    "speed_MAE": 1.2619295302,
+    "speed_RMSE": 1.596248696,
+    "dir_CMAE_all": 37.2902684564,
+    "dir_CMAE_fast": 30.5849462366
+   },
+   {
+    "lead_h": 14,
+    "speed_MAE": 1.3288255034,
+    "speed_RMSE": 1.6796096542,
+    "dir_CMAE_all": 37.7902684564,
+    "dir_CMAE_fast": 32.6047008547
+   },
+   {
+    "lead_h": 15,
+    "speed_MAE": 1.302852349,
+    "speed_RMSE": 1.6761007602,
+    "dir_CMAE_all": 37.8003355705,
+    "dir_CMAE_fast": 32.8201284797
+   },
+   {
+    "lead_h": 16,
+    "speed_MAE": 1.2889261745,
+    "speed_RMSE": 1.6440733503,
+    "dir_CMAE_all": 38.1241610738,
+    "dir_CMAE_fast": 32.0821052632
+   },
+   {
+    "lead_h": 17,
+    "speed_MAE": 1.313590604,
+    "speed_RMSE": 1.6475158237,
+    "dir_CMAE_all": 36.5469798658,
+    "dir_CMAE_fast": 31.044397463
+   },
+   {
+    "lead_h": 18,
+    "speed_MAE": 1.3115268456,
+    "speed_RMSE": 1.6656058313,
+    "dir_CMAE_all": 35.4781879195,
+    "dir_CMAE_fast": 30.3050847458
+   },
+   {
+    "lead_h": 19,
+    "speed_MAE": 1.3043288591,
+    "speed_RMSE": 1.6706980215,
+    "dir_CMAE_all": 32.8640939597,
+    "dir_CMAE_fast": 26.5247311828
+   },
+   {
+    "lead_h": 20,
+    "speed_MAE": 1.304614094,
+    "speed_RMSE": 1.6902315575,
+    "dir_CMAE_all": 31.6476510067,
+    "dir_CMAE_fast": 27.344017094
+   },
+   {
+    "lead_h": 21,
+    "speed_MAE": 1.1725167785,
+    "speed_RMSE": 1.5487621166,
+    "dir_CMAE_all": 30.6728187919,
+    "dir_CMAE_fast": 26.8412017167
+   },
+   {
+    "lead_h": 22,
+    "speed_MAE": 1.11,
+    "speed_RMSE": 1.4565414815,
+    "dir_CMAE_all": 30.5402684564,
+    "dir_CMAE_fast": 26.2315789474
+   },
+   {
+    "lead_h": 23,
+    "speed_MAE": 1.0833389262,
+    "speed_RMSE": 1.4158558609,
+    "dir_CMAE_all": 29.7634228188,
+    "dir_CMAE_fast": 25.2558139535
+   },
+   {
+    "lead_h": 24,
+    "speed_MAE": 1.0406040268,
+    "speed_RMSE": 1.3977855209,
+    "dir_CMAE_all": 30.5436241611,
+    "dir_CMAE_fast": 24.5741525424
+   }
+  ],
+  "Seasonal naive (24h)": [
+   {
+    "lead_h": 1,
+    "speed_MAE": 0.9725503356,
+    "speed_RMSE": 1.289932624,
+    "dir_CMAE_all": 29.1191275168,
+    "dir_CMAE_fast": 22.152360515
+   },
+   {
+    "lead_h": 2,
+    "speed_MAE": 1.0313087248,
+    "speed_RMSE": 1.3609173278,
+    "dir_CMAE_all": 27.6879194631,
+    "dir_CMAE_fast": 22.6047008547
+   },
+   {
+    "lead_h": 3,
+    "speed_MAE": 1.074647651,
+    "speed_RMSE": 1.419968983,
+    "dir_CMAE_all": 27.2919463087,
+    "dir_CMAE_fast": 22.4496788009
+   },
+   {
+    "lead_h": 4,
+    "speed_MAE": 1.0643120805,
+    "speed_RMSE": 1.3865179577,
+    "dir_CMAE_all": 26.9832214765,
+    "dir_CMAE_fast": 22.5882352941
+   },
+   {
+    "lead_h": 5,
+    "speed_MAE": 1.0439932886,
+    "speed_RMSE": 1.3696940333,
+    "dir_CMAE_all": 26.7483221477,
+    "dir_CMAE_fast": 21.9873417722
+   },
+   {
+    "lead_h": 6,
+    "speed_MAE": 1.0383724832,
+    "speed_RMSE": 1.3957651074,
+    "dir_CMAE_all": 30.4127516779,
+    "dir_CMAE_fast": 24.3657505285
+   },
+   {
+    "lead_h": 7,
+    "speed_MAE": 0.9759563758,
+    "speed_RMSE": 1.2932421798,
+    "dir_CMAE_all": 29.2181208054,
+    "dir_CMAE_fast": 22.2789699571
+   },
+   {
+    "lead_h": 8,
+    "speed_MAE": 1.033942953,
+    "speed_RMSE": 1.3626872755,
+    "dir_CMAE_all": 27.7466442953,
+    "dir_CMAE_fast": 22.6794871795
+   },
+   {
+    "lead_h": 9,
+    "speed_MAE": 1.0746812081,
+    "speed_RMSE": 1.4199725279,
+    "dir_CMAE_all": 27.3288590604,
+    "dir_CMAE_fast": 22.4967880086
+   },
+   {
+    "lead_h": 10,
+    "speed_MAE": 1.0648825503,
+    "speed_RMSE": 1.3868347308,
+    "dir_CMAE_all": 26.9865771812,
+    "dir_CMAE_fast": 22.6273684211
+   },
+   {
+    "lead_h": 11,
+    "speed_MAE": 1.0430369128,
+    "speed_RMSE": 1.3690480085,
+    "dir_CMAE_all": 26.755033557,
+    "dir_CMAE_fast": 22.0042283298
+   },
+   {
+    "lead_h": 12,
+    "speed_MAE": 1.0387416107,
+    "speed_RMSE": 1.3960004591,
+    "dir_CMAE_all": 30.389261745,
+    "dir_CMAE_fast": 24.3792372881
+   },
+   {
+    "lead_h": 13,
+    "speed_MAE": 0.9782214765,
+    "speed_RMSE": 1.2951061733,
+    "dir_CMAE_all": 29.2583892617,
+    "dir_CMAE_fast": 22.2967741935
+   },
+   {
+    "lead_h": 14,
+    "speed_MAE": 1.0393791946,
+    "speed_RMSE": 1.3697302311,
+    "dir_CMAE_all": 27.9026845638,
+    "dir_CMAE_fast": 22.8782051282
+   },
+   {
+    "lead_h": 15,
+    "speed_MAE": 1.0796308725,
+    "speed_RMSE": 1.4262851264,
+    "dir_CMAE_all": 27.5369127517,
+    "dir_CMAE_fast": 22.7623126338
+   },
+   {
+    "lead_h": 16,
+    "speed_MAE": 1.0668791946,
+    "speed_RMSE": 1.3885253633,
+    "dir_CMAE_all": 27.1761744966,
+    "dir_CMAE_fast": 22.8652631579
+   },
+   {
+    "lead_h": 17,
+    "speed_MAE": 1.0440436242,
+    "speed_RMSE": 1.3695332448,
+    "dir_CMAE_all": 26.9211409396,
+    "dir_CMAE_fast": 22.2135306554
+   },
+   {
+    "lead_h": 18,
+    "speed_MAE": 1.0397315436,
+    "speed_RMSE": 1.3965428311,
+    "dir_CMAE_all": 30.5268456376,
+    "dir_CMAE_fast": 24.5529661017
+   },
+   {
+    "lead_h": 19,
+    "speed_MAE": 0.9819630872,
+    "speed_RMSE": 1.2985827975,
+    "dir_CMAE_all": 29.4093959732,
+    "dir_CMAE_fast": 22.4903225806
+   },
+   {
+    "lead_h": 20,
+    "speed_MAE": 1.0424161074,
+    "speed_RMSE": 1.372089476,
+    "dir_CMAE_all": 27.994966443,
+    "dir_CMAE_fast": 22.9957264957
+   },
+   {
+    "lead_h": 21,
+    "speed_MAE": 1.0797483221,
+    "speed_RMSE": 1.4262929493,
+    "dir_CMAE_all": 27.6879194631,
+    "dir_CMAE_fast": 22.7961373391
+   },
+   {
+    "lead_h": 22,
+    "speed_MAE": 1.0688590604,
+    "speed_RMSE": 1.3902353622,
+    "dir_CMAE_all": 27.2030201342,
+    "dir_CMAE_fast": 22.8989473684
+   },
+   {
+    "lead_h": 23,
+    "speed_MAE": 1.0467281879,
+    "speed_RMSE": 1.3730179736,
+    "dir_CMAE_all": 26.9228187919,
+    "dir_CMAE_fast": 22.2156448203
+   },
+   {
+    "lead_h": 24,
+    "speed_MAE": 1.0406040268,
+    "speed_RMSE": 1.3977855209,
+    "dir_CMAE_all": 30.5436241611,
+    "dir_CMAE_fast": 24.5741525424
+   }
+  ],
+  "SARIMAX": [
+   {
+    "lead_h": 1,
+    "speed_MAE": 0.5700287075,
+    "speed_RMSE": 0.8348181662,
+    "dir_CMAE_all": 12.9412298092,
+    "dir_CMAE_fast": 10.2245851776
+   },
+   {
+    "lead_h": 2,
+    "speed_MAE": 0.7610726122,
+    "speed_RMSE": 1.0184211602,
+    "dir_CMAE_all": 20.9362091937,
+    "dir_CMAE_fast": 18.1043664481
+   },
+   {
+    "lead_h": 3,
+    "speed_MAE": 0.8790687577,
+    "speed_RMSE": 1.1697754272,
+    "dir_CMAE_all": 25.5403430824,
+    "dir_CMAE_fast": 21.271825637
+   },
+   {
+    "lead_h": 4,
+    "speed_MAE": 0.9391435245,
+    "speed_RMSE": 1.2192200382,
+    "dir_CMAE_all": 28.0393628599,
+    "dir_CMAE_fast": 23.8326299452
+   },
+   {
+    "lead_h": 5,
+    "speed_MAE": 0.9612281622,
+    "speed_RMSE": 1.2513437512,
+    "dir_CMAE_all": 29.2590213651,
+    "dir_CMAE_fast": 25.7075923964
+   },
+   {
+    "lead_h": 6,
+    "speed_MAE": 1.0118629317,
+    "speed_RMSE": 1.2865181491,
+    "dir_CMAE_all": 32.6075850992,
+    "dir_CMAE_fast": 29.4139244772
+   },
+   {
+    "lead_h": 7,
+    "speed_MAE": 0.9751452926,
+    "speed_RMSE": 1.2567673202,
+    "dir_CMAE_all": 33.1954730422,
+    "dir_CMAE_fast": 28.7745255294
+   },
+   {
+    "lead_h": 8,
+    "speed_MAE": 1.0106298084,
+    "speed_RMSE": 1.2849128672,
+    "dir_CMAE_all": 34.3928695688,
+    "dir_CMAE_fast": 30.7530064095
+   },
+   {
+    "lead_h": 9,
+    "speed_MAE": 1.0113047505,
+    "speed_RMSE": 1.3123702372,
+    "dir_CMAE_all": 36.0786025123,
+    "dir_CMAE_fast": 32.3567019414
+   },
+   {
+    "lead_h": 10,
+    "speed_MAE": 1.0236956415,
+    "speed_RMSE": 1.3289568841,
+    "dir_CMAE_all": 36.9446766587,
+    "dir_CMAE_fast": 32.4459660663
+   },
+   {
+    "lead_h": 11,
+    "speed_MAE": 1.0279220683,
+    "speed_RMSE": 1.3400458272,
+    "dir_CMAE_all": 36.6522700838,
+    "dir_CMAE_fast": 32.9943297626
+   },
+   {
+    "lead_h": 12,
+    "speed_MAE": 1.0488383923,
+    "speed_RMSE": 1.3525980268,
+    "dir_CMAE_all": 38.5340779491,
+    "dir_CMAE_fast": 35.5313934804
+   },
+   {
+    "lead_h": 13,
+    "speed_MAE": 1.0176148113,
+    "speed_RMSE": 1.3117210664,
+    "dir_CMAE_all": 38.6617198929,
+    "dir_CMAE_fast": 33.6241827023
+   },
+   {
+    "lead_h": 14,
+    "speed_MAE": 1.0487086234,
+    "speed_RMSE": 1.3310131734,
+    "dir_CMAE_all": 40.0560066551,
+    "dir_CMAE_fast": 36.737724479
+   },
+   {
+    "lead_h": 15,
+    "speed_MAE": 1.0476191338,
+    "speed_RMSE": 1.3557711058,
+    "dir_CMAE_all": 40.8516153908,
+    "dir_CMAE_fast": 38.3802536345
+   },
+   {
+    "lead_h": 16,
+    "speed_MAE": 1.0530881838,
+    "speed_RMSE": 1.3673213402,
+    "dir_CMAE_all": 41.7916342542,
+    "dir_CMAE_fast": 39.303403747
+   },
+   {
+    "lead_h": 17,
+    "speed_MAE": 1.0518073492,
+    "speed_RMSE": 1.371437578,
+    "dir_CMAE_all": 42.2050624724,
+    "dir_CMAE_fast": 39.2598257502
+   },
+   {
+    "lead_h": 18,
+    "speed_MAE": 1.0745039573,
+    "speed_RMSE": 1.3800583306,
+    "dir_CMAE_all": 43.8438378146,
+    "dir_CMAE_fast": 42.0863198068
+   },
+   {
+    "lead_h": 19,
+    "speed_MAE": 1.0363854551,
+    "speed_RMSE": 1.3349477588,
+    "dir_CMAE_all": 43.5520182866,
+    "dir_CMAE_fast": 40.6160173755
+   },
+   {
+    "lead_h": 20,
+    "speed_MAE": 1.0585259483,
+    "speed_RMSE": 1.3446991202,
+    "dir_CMAE_all": 43.8452090518,
+    "dir_CMAE_fast": 43.0152465174
+   },
+   {
+    "lead_h": 21,
+    "speed_MAE": 1.0585793336,
+    "speed_RMSE": 1.3670071477,
+    "dir_CMAE_all": 45.1272885611,
+    "dir_CMAE_fast": 44.5735525216
+   },
+   {
+    "lead_h": 22,
+    "speed_MAE": 1.0627280466,
+    "speed_RMSE": 1.377288171,
+    "dir_CMAE_all": 45.4879870133,
+    "dir_CMAE_fast": 45.0232289701
+   },
+   {
+    "lead_h": 23,
+    "speed_MAE": 1.0582006064,
+    "speed_RMSE": 1.3789602323,
+    "dir_CMAE_all": 46.26426633,
+    "dir_CMAE_fast": 44.690102718
+   },
+   {
+    "lead_h": 24,
+    "speed_MAE": 1.079268525,
+    "speed_RMSE": 1.3849531398,
+    "dir_CMAE_all": 48.3660808604,
+    "dir_CMAE_fast": 46.5611777631
+   }
+  ],
+  "LightGBM": [
+   {
+    "lead_h": 1,
+    "speed_MAE": 0.5100752178,
+    "speed_RMSE": 0.7269478616,
+    "dir_CMAE_all": 11.8109233476,
+    "dir_CMAE_fast": 8.9169405374
+   },
+   {
+    "lead_h": 2,
+    "speed_MAE": 0.7169323861,
+    "speed_RMSE": 0.9243477696,
+    "dir_CMAE_all": 18.0434825445,
+    "dir_CMAE_fast": 14.8232437611
+   },
+   {
+    "lead_h": 3,
+    "speed_MAE": 0.7971025551,
+    "speed_RMSE": 1.0385446893,
+    "dir_CMAE_all": 20.0696093845,
+    "dir_CMAE_fast": 16.2151700665
+   },
+   {
+    "lead_h": 4,
+    "speed_MAE": 0.829956899,
+    "speed_RMSE": 1.0822230868,
+    "dir_CMAE_all": 21.3757007708,
+    "dir_CMAE_fast": 16.9502574609
+   },
+   {
+    "lead_h": 5,
+    "speed_MAE": 0.8514068413,
+    "speed_RMSE": 1.126018015,
+    "dir_CMAE_all": 21.760032472,
+    "dir_CMAE_fast": 17.8765654952
+   },
+   {
+    "lead_h": 6,
+    "speed_MAE": 0.9051459842,
+    "speed_RMSE": 1.1901806072,
+    "dir_CMAE_all": 24.5720928904,
+    "dir_CMAE_fast": 20.4773147484
+   },
+   {
+    "lead_h": 7,
+    "speed_MAE": 0.8956096875,
+    "speed_RMSE": 1.1537611163,
+    "dir_CMAE_all": 25.1024558188,
+    "dir_CMAE_fast": 19.8306925523
+   },
+   {
+    "lead_h": 8,
+    "speed_MAE": 0.9486436728,
+    "speed_RMSE": 1.1893060054,
+    "dir_CMAE_all": 26.1447190961,
+    "dir_CMAE_fast": 21.0007757095
+   },
+   {
+    "lead_h": 9,
+    "speed_MAE": 0.9400648462,
+    "speed_RMSE": 1.192872833,
+    "dir_CMAE_all": 25.3585419699,
+    "dir_CMAE_fast": 20.8168945146
+   },
+   {
+    "lead_h": 10,
+    "speed_MAE": 0.9080231086,
+    "speed_RMSE": 1.160389967,
+    "dir_CMAE_all": 25.372907757,
+    "dir_CMAE_fast": 20.3181942858
+   },
+   {
+    "lead_h": 11,
+    "speed_MAE": 0.895548467,
+    "speed_RMSE": 1.1579336017,
+    "dir_CMAE_all": 25.1804203129,
+    "dir_CMAE_fast": 20.530300465
+   },
+   {
+    "lead_h": 12,
+    "speed_MAE": 0.8974865501,
+    "speed_RMSE": 1.1725918947,
+    "dir_CMAE_all": 26.7416285814,
+    "dir_CMAE_fast": 21.5888713068
+   },
+   {
+    "lead_h": 13,
+    "speed_MAE": 0.8980807649,
+    "speed_RMSE": 1.1669338209,
+    "dir_CMAE_all": 27.8705804832,
+    "dir_CMAE_fast": 21.5828689425
+   },
+   {
+    "lead_h": 14,
+    "speed_MAE": 0.9600440921,
+    "speed_RMSE": 1.2068857622,
+    "dir_CMAE_all": 28.4715008761,
+    "dir_CMAE_fast": 22.0727120634
+   },
+   {
+    "lead_h": 15,
+    "speed_MAE": 0.9592747914,
+    "speed_RMSE": 1.2114992359,
+    "dir_CMAE_all": 27.8961914508,
+    "dir_CMAE_fast": 22.3838032083
+   },
+   {
+    "lead_h": 16,
+    "speed_MAE": 0.9027207045,
+    "speed_RMSE": 1.1622148899,
+    "dir_CMAE_all": 27.7791206296,
+    "dir_CMAE_fast": 22.2386433852
+   },
+   {
+    "lead_h": 17,
+    "speed_MAE": 0.8976727878,
+    "speed_RMSE": 1.1556940629,
+    "dir_CMAE_all": 27.7229336023,
+    "dir_CMAE_fast": 22.6786416389
+   },
+   {
+    "lead_h": 18,
+    "speed_MAE": 0.9178592114,
+    "speed_RMSE": 1.1932061264,
+    "dir_CMAE_all": 28.8130790742,
+    "dir_CMAE_fast": 23.8317128066
+   },
+   {
+    "lead_h": 19,
+    "speed_MAE": 0.9074027108,
+    "speed_RMSE": 1.1755636002,
+    "dir_CMAE_all": 28.6880014864,
+    "dir_CMAE_fast": 22.0741294136
+   },
+   {
+    "lead_h": 20,
+    "speed_MAE": 0.9675622577,
+    "speed_RMSE": 1.2096131772,
+    "dir_CMAE_all": 28.2158787131,
+    "dir_CMAE_fast": 22.5961455541
+   },
+   {
+    "lead_h": 21,
+    "speed_MAE": 0.9623224297,
+    "speed_RMSE": 1.2294062835,
+    "dir_CMAE_all": 27.3670077451,
+    "dir_CMAE_fast": 22.1409054208
+   },
+   {
+    "lead_h": 22,
+    "speed_MAE": 0.921170297,
+    "speed_RMSE": 1.195161261,
+    "dir_CMAE_all": 27.9902087762,
+    "dir_CMAE_fast": 22.7648137081
+   },
+   {
+    "lead_h": 23,
+    "speed_MAE": 0.9246035999,
+    "speed_RMSE": 1.1963575063,
+    "dir_CMAE_all": 28.0329311929,
+    "dir_CMAE_fast": 22.7304296855
+   },
+   {
+    "lead_h": 24,
+    "speed_MAE": 0.9306900153,
+    "speed_RMSE": 1.2086503883,
+    "dir_CMAE_all": 29.8515956383,
+    "dir_CMAE_fast": 24.3223638139
+   }
+  ]
+ },
+ "selection": [
+  {
+   "target": "speed",
+   "metric": "RMSE_1-24h",
+   "winner": "LightGBM",
+   "winner_score": 1.1427626484,
+   "best_baseline": "Seasonal naive (24h)",
+   "baseline_score": 1.3730961777,
+   "improvement_%": 16.7747556942,
+   "mean_err_diff_vs_baseline_95%CI": "[-0.201, -0.108]",
+   "significantly_better": true
+  },
+  {
+   "target": "direction",
+   "metric": "dirMAE_fast_1-24h",
+   "winner": "LightGBM",
+   "winner_score": 20.4484329393,
+   "best_baseline": "Seasonal naive (24h)",
+   "baseline_score": 22.8397554153,
+   "improvement_%": 10.4700003675,
+   "mean_err_diff_vs_baseline_95%CI": "[-4.683, -0.178]",
+   "significantly_better": true
+  }
+ ],
+ "criteria": [
+  {
+   "criterion": "speed winner (LightGBM) beats both baselines at 1 h",
+   "met": true
+  },
+  {
+   "criterion": "direction winner (LightGBM) beats both baselines at 1 h",
+   "met": true
+  },
+  {
+   "criterion": "speed winner (LightGBM) beats both baselines at 6 h",
+   "met": true
+  },
+  {
+   "criterion": "direction winner (LightGBM) beats both baselines at 6 h",
+   "met": true
+  },
+  {
+   "criterion": "speed winner (LightGBM) beats both baselines at 12 h",
+   "met": true
+  },
+  {
+   "criterion": "direction winner (LightGBM) beats both baselines at 12 h",
+   "met": true
+  },
+  {
+   "criterion": "speed winner (LightGBM) beats both baselines at 24 h",
+   "met": true
+  },
+  {
+   "criterion": "direction winner (LightGBM) beats both baselines at 24 h",
+   "met": true
+  },
+  {
+   "criterion": "scored on many forecast origins (n=596 >= 100)",
+   "met": true
+  },
+  {
+   "criterion": "direction error uses circular statistics",
+   "met": true
+  },
+  {
+   "criterion": "ML predictions do not use the Forecast API",
+   "met": true
+  }
+ ],
+ "details": {
+  "sarimax_speed": "(1,0,1)x(1,0,1,24) [orig]",
+  "sarimax_dir": "(1,0,1)x(1,0,1,24) [orig]",
+  "gbm_speed_cfg": "medium",
+  "gbm_speed_delta": false,
+  "gbm_dir_cfg": "medium"
+ },
+ "refit_log": [
+  {
+   "trained_through": "2026-05-25 00:00:00",
+   "n_origins_scored": 120
+  },
+  {
+   "trained_through": "2026-06-24 00:00:00",
+   "n_origins_scored": 120
+  },
+  {
+   "trained_through": "2026-07-24 00:00:00",
+   "n_origins_scored": 120
+  },
+  {
+   "trained_through": "2026-08-23 00:00:00",
+   "n_origins_scored": 120
+  },
+  {
+   "trained_through": "2026-09-22 00:00:00",
+   "n_origins_scored": 116
+  }
+ ],
+ "sarimax_tuning": [],
+ "gbm_tuning": [],
+ "report_md": "",
+ "limitations": [
+  "Data are reanalysis (Open-Meteo archive, about 9-25 km grid) at 100 m, not a site sensor; errors measure agreement with that dataset.",
+  "The archive lags real time by several days, so a forecast covers the 24 h after the chosen start date, not necessarily after today.",
+  "Energy comes from a theoretical NREL power curve with no wake, availability, curtailment, turbulence, icing or air-density losses; no observed generation exists here, so energy accuracy against real output is not measured.",
+  "Direction below the speed threshold or with low confidence is not acted on; yaw output is advisory and no turbine commands are sent.",
+  "The Forecast API comparison uses the Previous Runs API; observed values come from the same model family as the API, which favours the API.",
+  "Backtest covers about 5 months, so seasonal coverage is limited; point forecasts only (no prediction intervals yet)."
+ ],
+ "created_at": "2026-10-26T08:49:39",
+ "evaluation_stale": false,
+ "energy_error_proxy": {
+  "turbine": "2023NREL_Bespoke_3.3MW_148",
+  "rows": [
+   {
+    "model": "Persistence",
+    "lead_h": 1,
+    "energy_MAE_kWh": 174.6658389262,
+    "energy_RMSE_kWh": 323.305391328
+   },
+   {
+    "model": "Persistence",
+    "lead_h": 6,
+    "energy_MAE_kWh": 387.8258389262,
+    "energy_RMSE_kWh": 566.4440808952
+   },
+   {
+    "model": "Persistence",
+    "lead_h": 12,
+    "energy_MAE_kWh": 379.4823489933,
+    "energy_RMSE_kWh": 551.5806641466
+   },
+   {
+    "model": "Persistence",
+    "lead_h": 24,
+    "energy_MAE_kWh": 318.4186577181,
+    "energy_RMSE_kWh": 514.8663479666
+   },
+   {
+    "model": "Persistence",
+    "lead_h": "24h total",
+    "energy_MAE_kWh": 6730.1646979866,
+    "energy_RMSE_kWh": 9635.2523225603
+   },
+   {
+    "model": "Seasonal naive (24h)",
+    "lead_h": 1,
+    "energy_MAE_kWh": 283.2414765101,
+    "energy_RMSE_kWh": 425.7435871224
+   },
+   {
+    "model": "Seasonal naive (24h)",
+    "lead_h": 6,
+    "energy_MAE_kWh": 319.8918120805,
+    "energy_RMSE_kWh": 515.5901968599
+   },
+   {
+    "model": "Seasonal naive (24h)",
+    "lead_h": 12,
+    "energy_MAE_kWh": 319.4288590604,
+    "energy_RMSE_kWh": 515.466306465
+   },
+   {
+    "model": "Seasonal naive (24h)",
+    "lead_h": 24,
+    "energy_MAE_kWh": 318.4186577181,
+    "energy_RMSE_kWh": 514.8663479666
+   },
+   {
+    "model": "Seasonal naive (24h)",
+    "lead_h": "24h total",
+    "energy_MAE_kWh": 4344.734966443,
+    "energy_RMSE_kWh": 6233.7553343235
+   },
+   {
+    "model": "SARIMAX",
+    "lead_h": 1,
+    "energy_MAE_kWh": 181.1203633325,
+    "energy_RMSE_kWh": 329.1021012704
+   },
+   {
+    "model": "SARIMAX",
+    "lead_h": 6,
+    "energy_MAE_kWh": 320.3838348785,
+    "energy_RMSE_kWh": 486.2816281563
+   },
+   {
+    "model": "SARIMAX",
+    "lead_h": 12,
+    "energy_MAE_kWh": 331.7471668208,
+    "energy_RMSE_kWh": 509.5513476426
+   },
+   {
+    "model": "SARIMAX",
+    "lead_h": 24,
+    "energy_MAE_kWh": 338.6158021162,
+    "energy_RMSE_kWh": 520.0878992318
+   },
+   {
+    "model": "SARIMAX",
+    "lead_h": "24h total",
+    "energy_MAE_kWh": 5197.5547017274,
+    "energy_RMSE_kWh": 8185.3785005831
+   },
+   {
+    "model": "LightGBM",
+    "lead_h": 1,
+    "energy_MAE_kWh": 152.5735260292,
+    "energy_RMSE_kWh": 268.3882000888
+   },
+   {
+    "model": "LightGBM",
+    "lead_h": 6,
+    "energy_MAE_kWh": 283.5947307496,
+    "energy_RMSE_kWh": 429.1584099827
+   },
+   {
+    "model": "LightGBM",
+    "lead_h": 12,
+    "energy_MAE_kWh": 277.4731425175,
+    "energy_RMSE_kWh": 429.6383721045
+   },
+   {
+    "model": "LightGBM",
+    "lead_h": 24,
+    "energy_MAE_kWh": 288.2128276145,
+    "energy_RMSE_kWh": 446.4013838097
+   },
+   {
+    "model": "LightGBM",
+    "lead_h": "24h total",
+    "energy_MAE_kWh": 3908.3459894748,
+    "energy_RMSE_kWh": 5869.4394352522
+   }
+  ],
+  "note": "Curve energy from predicted wind vs curve energy from observed (reanalysis) wind, kWh per hour. Measures wind-forecast error only, NOT accuracy against measured generation."
+ }
+}

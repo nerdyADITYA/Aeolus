@@ -1,0 +1,123 @@
+{
+ "model": "LightGBM",
+ "conf_min": 0.75,
+ "dir_min_speed": 3.0,
+ "sweep": [
+  {
+   "R_threshold": 0.1,
+   "coverage_%": 99.8811521253,
+   "circ_MAE_kept_deg": 25.3761017954
+  },
+  {
+   "R_threshold": 0.2,
+   "coverage_%": 99.3148769575,
+   "circ_MAE_kept_deg": 25.1164069751
+  },
+  {
+   "R_threshold": 0.3,
+   "coverage_%": 98.0285234899,
+   "circ_MAE_kept_deg": 24.5936902192
+  },
+  {
+   "R_threshold": 0.4,
+   "coverage_%": 95.8612975391,
+   "circ_MAE_kept_deg": 23.7561707127
+  },
+  {
+   "R_threshold": 0.5,
+   "coverage_%": 92.6034675615,
+   "circ_MAE_kept_deg": 22.6147386294
+  },
+  {
+   "R_threshold": 0.6,
+   "coverage_%": 88.1711409396,
+   "circ_MAE_kept_deg": 21.2951143977
+  },
+  {
+   "R_threshold": 0.7,
+   "coverage_%": 81.8582214765,
+   "circ_MAE_kept_deg": 20.0175700658
+  },
+  {
+   "R_threshold": 0.8,
+   "coverage_%": 69.13450783,
+   "circ_MAE_kept_deg": 18.3127828163
+  },
+  {
+   "R_threshold": 0.9,
+   "coverage_%": 38.192114094,
+   "circ_MAE_kept_deg": 15.3157638253
+  }
+ ],
+ "by_confidence": [
+  {
+   "R_bin": "(-0.001, 0.2]",
+   "count": 98,
+   "mean": 70.3502357269,
+   "median": 60.0067077579
+  },
+  {
+   "R_bin": "(0.2, 0.4]",
+   "count": 494,
+   "mean": 62.8726005593,
+   "median": 51.7268451966
+  },
+  {
+   "R_bin": "(0.4, 0.6]",
+   "count": 1100,
+   "mean": 51.9733000258,
+   "median": 40.5156223092
+  },
+  {
+   "R_bin": "(0.6, 0.8]",
+   "count": 2723,
+   "mean": 32.1259175593,
+   "median": 23.9572521967
+  },
+  {
+   "R_bin": "(0.8, 1.0]",
+   "count": 9889,
+   "mean": 18.3127828163,
+   "median": 12.6738264822
+  }
+ ],
+ "by_speed": [
+  {
+   "speed_bin": "(-0.001, 2.0]",
+   "count": 1263,
+   "mean": 57.5207977883,
+   "median": 44.9895620483
+  },
+  {
+   "speed_bin": "(2.0, 3.0]",
+   "count": 1797,
+   "mean": 34.0225721471,
+   "median": 22.6318923043
+  },
+  {
+   "speed_bin": "(3.0, 5.0]",
+   "count": 7366,
+   "mean": 21.8011167393,
+   "median": 14.8144645576
+  },
+  {
+   "speed_bin": "(5.0, 8.0]",
+   "count": 3674,
+   "mean": 18.1752945626,
+   "median": 13.1194600201
+  },
+  {
+   "speed_bin": "(8.0, 100.0]",
+   "count": 204,
+   "mean": 12.4882976007,
+   "median": 8.740746848
+  }
+ ],
+ "summary": {
+  "all hours": 25.42631435891529,
+  "obs speed >= 3.0 m/s": 20.453367872351194,
+  "R >= 0.75": 19.286652962655015,
+  "both": 17.27975073667891
+ },
+ "corr_R_error": -0.4604483055336204
+}

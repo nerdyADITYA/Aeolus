@@ -1,0 +1,23 @@
+# dependencies and build output
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# local runtime data (created by the app; see backend/.gitignore)
+backend/data/
+backend/models/
+backend/reports/
+
+# secrets and local config
+.env
+*.local
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
