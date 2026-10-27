@@ -116,4 +116,15 @@ export const CHART_INFO = {
       'This compares two forecasts with each other. It does not say which one is right: that can only be checked later, against what was actually observed. ' +
       'The Open-Meteo forecast is never an input to our model.',
   },
+  turbine3d: {
+    shows:
+      'A 3D model of the selected turbine for one forecast hour. The nacelle (the housing at the top) faces the advised heading, the purple ball marks that heading on the ground ring, ' +
+      'the arrow shows where the wind blows from, and the blades turn faster when the forecast power is higher.',
+    use:
+      'See the forecast as the machine would live it: how the turbine would turn through the day, when it stands idle in light wind and when the direction is not trusted enough to turn. ' +
+      'Move the hour slider or press Play to step through the 24 hours; the size follows the turbine you chose.',
+    read:
+      'This is an illustration of the model forecast, not a physical simulation: the blade speed is a simple function of the forecast power. ' +
+      'A faded grey arrow means the wind direction is not trusted that hour, so the nacelle holds its last heading. Drag to look around, scroll to zoom.',
+  },
 };

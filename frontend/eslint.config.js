@@ -25,5 +25,7 @@ export default [
       'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
     },
   },
+  // react-three-fiber elements (<mesh position=... args=...>) use three.js property names, not DOM attributes.
+  { files: ['src/components/turbine3d/TurbineScene.jsx'], rules: { 'react/no-unknown-property': 'off' } },
   { files: ['**/*.test.{js,jsx}', 'src/test/**'], rules: { 'react/prop-types': 'off' } },
 ];

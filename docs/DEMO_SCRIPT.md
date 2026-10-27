@@ -70,7 +70,7 @@ Point out: runs on this PC, no login, one site.
 - Assumptions panel: reanalysis not a sensor; energy is idealised; yaw is advisory; the archive lags real time, so the forecast starts from a chosen past date.
 
 ### 11:45 Close (15 s)
-"Built with a tested pipeline: **281 automated tests** (71 backend, 210 frontend), no data leakage by construction, and a dashboard that reports its own weaknesses. Next step would be real turbine data and a live feed."
+"Built with a tested pipeline: **337 automated tests** (72 backend, 265 frontend), no data leakage by construction, and a dashboard that reports its own weaknesses. Next step would be real turbine data and a live feed."
 
 ---
 
@@ -87,7 +87,7 @@ Point out: runs on this PC, no login, one site.
 | Forecast for 22 Oct 2026 | 7,768 kWh, capacity factor 9.8%, peak 757 kW, 15 of 24 hours reliable direction |
 | Turbine | NREL Bespoke 3.3 MW, hub 100 m (Vestas V82 gives about 982 kWh) |
 | Models | LightGBM: 72 models (24 hours × speed, sine, cosine), retrained every 30 days in the backtest |
-| Tests | 71 backend + 210 frontend (+ 6 slow parity tests against the notebook) |
+| Tests | 72 backend + 265 frontend (+ 6 slow parity tests against the notebook) |
 
 ---
 

@@ -60,6 +60,13 @@ export default function ForecastView() {
             <SpeedChart history={data.history || []} hours={hours} originUtc={data.origin_utc} cutInMs={data.turbine.cut_in_ms} />
             <Compass hours={hours} lead={lead} onLeadChange={setLead} />
           </div>
+          <div className="card row turbine-link">
+            <div style={{ flex: 1, minWidth: 220 }}>
+              <h3>3D turbine view</h3>
+              <p className="sub" style={{ margin: 0 }}>See this forecast on a 3D {data.turbine.name.replace(/_/g, ' ')}: it turns, spins and follows the hour you choose.</p>
+            </div>
+            <a className="btn primary" href="#/turbine">Open the 3D view →</a>
+          </div>
           <div className="grid g-2">
             <DirectionChart history={data.history || []} hours={hours} />
             <ConfidenceBars hours={hours} threshold={threshold} minSpeed={site.yaw?.min_speed_ms} />

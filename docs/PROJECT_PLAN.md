@@ -340,3 +340,14 @@ The three-mode Accuracy check section was replaced by **one chart with no inputs
 - **What it says and does not say:** it shows how far apart two forecasts are. It is not an accuracy score; that needs observations. The older `GET /api/site/compare` (model vs API vs observed, with a significance test) is unchanged and still available, but the dashboard no longer shows it, so the head-to-head result (API closer by +0.10 m/s at 24 h lead) now lives in the README and the API.
 - **Dev convenience:** `VITE_PORT` and `VITE_API_TARGET` let a second frontend run against a second backend without touching the default ports.
 - **Verification:** 12 backend tests (matching by clock time, gaps, duplicates, errors, newest date) and 40 frontend tests for the chart, helpers and section states; a live run against the real Open-Meteo service returned all 24 hours for 22 Oct 2026 (mean difference 0.52 m/s) and for 16 Oct (0.96 m/s).
+
+## 15. As-built notes (3D turbine view)
+
+An interactive 3D turbine was added (first inside the Forecast section; it was then moved to its own full-width page at `#/turbine`, reached from a new top menu and from a link in the Forecast section, because the in-page card was too small). A hash-based route chooses the page, with no router library. The page keeps the date of the dashboard (and lets you pick any stored forecast), and the readout floats over the large scene. It was added so the machine-learning output can be seen as the machine would live it.
+
+- **Scene:** built from basic shapes with three.js through react-three-fiber and drei (no model files). Tower height and rotor size come from the selected turbine's hub height and rotor diameter (typical sizes, flagged as estimated, if missing).
+- **Driven by the forecast hour:** nacelle turns (slowly, shortest way round) to the advised heading; a purple marker shows that heading on a compass ring; an arrow shows where the wind blows from (faded when the direction is unreliable); blade speed rises with forecast power (5-12 rpm, illustrative), and stops when idle (below cut-in) or shut down (at or above cut-out).
+- **Interaction:** hour slider, Play day, Reset view, orbit and zoom. The hour is shared with the compass and the table. No backend change was needed.
+- **Safeguards:** lazy-loaded chunk (about 220 KB gzipped) so the page loads as before; reduced motion keeps the pose static; no WebGL shows the numbers and a note; the camera starts 40 degrees off the rotor axis so the rotor is seen from the front-side.
+- **Testing:** the logic is tested without graphics (23 tests); the view is tested with the scene mocked (14 tests); mutation checks on states, boundaries, compass orientation, Play and the shared hour; verified by eye in the browser (idle rotor is still, producing rotor spins, slider moves the turbine).
+- **Honest limit:** an illustration of the forecast, not a physical simulation.

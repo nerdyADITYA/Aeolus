@@ -12,7 +12,7 @@ function statusChip(site, job, error) {
   return { tone: 'busy', text: 'preparing' };
 }
 
-export default function TopBar({ theme, onToggleTheme }) {
+export default function TopBar({ theme, onToggleTheme, route = 'dashboard' }) {
   const { site, job, error } = useSite();
   const chip = statusChip(site, job, error);
   return (
@@ -26,6 +26,12 @@ export default function TopBar({ theme, onToggleTheme }) {
         <span className={`dot ${chip.tone}`} aria-hidden="true" />
         {chip.text}
       </span>
+      {site?.status === 'ready' && (
+        <nav className="page-nav" aria-label="Pages">
+          <a href="#/" aria-current={route === 'dashboard' ? 'page' : undefined}>Dashboard</a>
+          <a href="#/turbine" aria-current={route === 'turbine' ? 'page' : undefined}>3D turbine</a>
+        </nav>
+      )}
       <div className="spacer" />
       <button type="button" className="btn" onClick={onToggleTheme} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
         ◐ {theme === 'dark' ? 'Light' : 'Dark'}
@@ -33,4 +39,4 @@ export default function TopBar({ theme, onToggleTheme }) {
     </header>
   );
 }
-TopBar.propTypes = { theme: PropTypes.oneOf(['dark', 'light']).isRequired, onToggleTheme: PropTypes.func.isRequired };
+TopBar.propTypes = { theme: PropTypes.oneOf(['dark', 'light']).isRequired, onToggleTheme: PropTypes.func.isRequired, route: PropTypes.oneOf(['dashboard', 'turbine']) };

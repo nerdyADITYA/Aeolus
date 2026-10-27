@@ -598,7 +598,8 @@ Everything runs on **your PC only**. There is no login, no cloud, no deployment.
 
 - **React 18 + Vite**. Charts with **Recharts**; the map with **react-leaflet** (OpenStreetMap tiles).
 - **State/hooks:** `useApi` (fetch with loading/error), `useJob` (poll a background job), `useTheme` (dark/light), `useChartColors`; contexts `SiteContext` and `ReportsContext`.
-- **Single page** with these sections, in order: Site, Data and turbine, Forecast, Model quality, Model vs Open-Meteo, Assumptions. Each chart has an *About this chart* panel (what it shows, what it is for, how to read it).
+- **3D turbine page** (menu item "3D turbine", address `#/turbine`; the dashboard's Forecast section has an "Open the 3D view" link): a large three.js scene (react-three-fiber) built from simple shapes. For the chosen forecast hour the nacelle turns to the advised heading, a purple ball marks that heading on the ground ring, the parts are colour-coded (blades, hub, nacelle, yaw system, tower) with a colour legend over the scene and a plain-words key underneath (pointing at an entry makes that part glow), an arrow shows where the wind blows from (faded grey when the direction is not trusted), and the blades turn at an *illustrative* speed that rises with the forecast power (still below cut-in and at cut-out). The slider, Play button, compass and table all share the same selected hour; tower height and rotor size follow the selected turbine. It is lazy-loaded, respects reduced-motion, and falls back to the numbers when the browser has no WebGL. The scene logic (states, rotor speed, geometry) is in `utils/turbine3d.js` and is unit-tested; the rendering is in `components/turbine3d/`.
+- **Two pages, no router library:** the address hash chooses between the dashboard and the 3D page. The dashboard is a single page with these sections, in order: Site, Data and turbine, Forecast, Model quality, Model vs Open-Meteo, Assumptions. Each chart has an *About this chart* panel (what it shows, what it is for, how to read it).
 - **Design:** modern, minimal, dark by default with a light option; tokens in CSS variables; smooth open/close and entrance animations (switched off if your system asks for reduced motion).
 - **Honest UI:** the page always shows data quality, assumptions and limits, and explains terms (for example the yaw legend, the "zero power" shading).
 
@@ -632,9 +633,9 @@ Open **http://localhost:5173**. Stop with `Ctrl+C` or `.\stop.ps1`. If PowerShel
 ## 9. Testing: how we know it is correct
 
 ```powershell
-cd backend ; python -m pytest                # 71 fast tests (about 90 s)
+cd backend ; python -m pytest                # 72 fast tests (about 90 s)
 python -m pytest -m slow -s                  # 6 slow "parity" tests (about 11 min)
-cd ..\frontend ; npm test                    # 210 tests
+cd ..\frontend ; npm test                    # 265 tests
 npm run lint ; npm run build
 ```
 
@@ -888,7 +889,7 @@ It is designed for local use: it binds to `127.0.0.1`, CORS allows only the loca
 Fixed random seed (42), pinned tested versions, stored raw data, and parity tests against the notebook.
 
 **Q67. How do you test it?**
-71 fast backend tests, 6 slow parity tests, 210 frontend tests, lint, and mutation checks (deliberately breaking the code to prove the tests notice).
+72 fast backend tests, 6 slow parity tests, 265 frontend tests, lint, and mutation checks (deliberately breaking the code to prove the tests notice).
 
 **Q68. What happens if Open-Meteo is down?**
 Setup fails at the download step with a clear message; already-prepared sites still work. The comparison chart shows an error with "Try again".
@@ -959,7 +960,7 @@ backend/            FastAPI service, forecasting code, tests
                     direction, yaw, turbine/energy, forecast, comparison, pipeline
   app/core/         circular math, metrics, model registry, job runner, rate limit
   app/db/           SQLAlchemy models and sessions
-  tests/            71 fast tests + 6 slow notebook-parity tests
+  tests/            72 fast tests + 6 slow notebook-parity tests
 frontend/           React app (JavaScript/JSX only), Vite, tests
 docs/               PROJECT_PLAN.md, DEMO_SCRIPT.md, design/ (HTML templates), legacy/
 outputs/            Notebook exports and sample data (used by the parity tests)

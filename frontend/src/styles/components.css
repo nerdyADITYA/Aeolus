@@ -848,3 +848,179 @@ details > summary::marker {
     transform: none;
   }
 }
+
+/* ---- 3D turbine view ---- */
+.turbine-stage {
+  position: relative;
+  height: 400px;
+  border-radius: var(--radius-sm);
+  background: radial-gradient(ellipse at 50% 30%, var(--glow), transparent 70%);
+  overflow: hidden;
+  touch-action: pan-y;
+}
+.turbine-stage canvas {
+  display: block;
+  cursor: grab;
+}
+.turbine-stage canvas:active {
+  cursor: grabbing;
+}
+.turbine-badge {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  pointer-events: none;
+}
+.turbine-fallback {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  gap: 6px;
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+}
+.turbine-controls {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+.turbine-readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px 16px;
+  margin: 14px 0 0;
+}
+.turbine-readout dt {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.turbine-readout dd {
+  margin: 2px 0 0;
+}
+.scene-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  pointer-events: none;
+  user-select: none;
+}
+@media (max-width: 640px) {
+  .turbine-stage {
+    height: 320px;
+  }
+}
+
+/* ---- page navigation and the full-page 3D view ---- */
+.page-nav {
+  display: flex;
+  gap: 6px;
+  margin-left: 8px;
+}
+.page-nav a {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 99px;
+  border: 1px solid transparent;
+  transition: color var(--t-fast), border-color var(--t-fast), background-color var(--t-fast);
+}
+.page-nav a:hover,
+.page-nav a:focus-visible {
+  color: var(--text);
+}
+.page-nav a[aria-current='page'] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--glow);
+}
+.turbine-link {
+  align-items: center;
+  gap: 16px;
+}
+.turbine-card.large .turbine-stage {
+  height: clamp(480px, calc(100vh - 290px), 960px);
+}
+.turbine-card.large .turbine-readout {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  width: 190px;
+  margin: 0;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+@media (max-width: 760px) {
+  .turbine-card.large .turbine-readout {
+    position: static;
+    width: auto;
+    grid-template-columns: repeat(2, 1fr);
+    border: none;
+    background: none;
+    padding: 12px 0 0;
+  }
+  .turbine-card.large .turbine-stage {
+    height: 420px;
+    overflow: visible;
+  }
+}
+
+/* ---- colour legend for the parts of the 3D turbine, and the key under it ---- */
+.parts-legend {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(6px);
+}
+.parts-legend li,
+.parts-key li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--text);
+}
+.parts-legend li {
+  cursor: default;
+}
+.parts-legend i,
+.parts-key i {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  transform: translateY(1px);
+}
+.parts-key {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px 20px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.parts-key strong {
+  color: var(--text);
+  font-weight: 500;
+}

@@ -30,7 +30,7 @@ describe('the explanation text', () => {
   it('covers every chart in the app', () => {
     expect(Object.keys(CHART_INFO).sort()).toEqual([
       'compass', 'confidence', 'curve', 'direction', 'errorByConfidence', 'errorBySpeed',
-      'leadDirection', 'leadSpeedMae', 'leadSpeedRmse', 'modelVsApi', 'power', 'speed',
+      'leadDirection', 'leadSpeedMae', 'leadSpeedRmse', 'modelVsApi', 'power', 'speed', 'turbine3d',
     ]);
   });
   it.each(entries)('%s explains what it shows, what it is for and how to read it, in real sentences', (_id, info) => {
