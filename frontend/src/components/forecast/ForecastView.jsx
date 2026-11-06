@@ -3,6 +3,7 @@ import { getForecast } from '../../api/endpoints.js';
 import { useApi } from '../../hooks/useApi.js';
 import { useSite } from '../../state/SiteContext.jsx';
 import { fmtNumber, fmtPercent, fmtUtc } from '../../utils/format.js';
+import { ENERGY_TARGET_KWH, energyTone } from '../../utils/forecast.js';
 import Compass from '../charts/Compass.jsx';
 import ConfidenceBars from '../charts/ConfidenceBars.jsx';
 import DirectionChart from '../charts/DirectionChart.jsx';
@@ -45,7 +46,8 @@ export default function ForecastView() {
   return (
     <div className="stack" style={{ gap: 16 }}>
       <div className="grid g-4">
-        <KpiCard label="Expected energy" value={fmtNumber(s.total_kwh)} unit="kWh" />
+        <KpiCard label="Expected energy" value={fmtNumber(s.total_kwh)} unit="kWh" tone={energyTone(s.total_kwh)}
+          note={energyTone(s.total_kwh) === 'good' ? `At or above ${fmtNumber(ENERGY_TARGET_KWH)} kWh` : energyTone(s.total_kwh) === 'bad' ? `Below ${fmtNumber(ENERGY_TARGET_KWH)} kWh` : undefined} />
         <KpiCard label="Capacity factor" value={fmtPercent(s.capacity_factor)} unit="%" />
         <KpiCard label="Peak power" value={fmtNumber(s.peak_kw)} unit="kW" />
         <KpiCard label="Mean speed @100 m" value={fmtNumber(s.mean_speed_ms, 1)} unit="m/s" />

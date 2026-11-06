@@ -39,7 +39,7 @@ describe('request', () => {
   it('treats a bodyless gateway error (dev proxy, backend down) as unreachable', async () => {
     globalThis.fetch = vi.fn().mockResolvedValue(new Response('', { status: 502, statusText: 'Bad Gateway' }));
     const err = await request('/api/health').catch((e) => e);
-    expect([err.status, err.detail]).toEqual([0, 'Cannot reach the backend. Is it running on http://127.0.0.1:8000?']);
+    expect([err.status, err.detail]).toEqual([0, 'Cannot reach the backend. Is it running?']);
     expect(err.hint).toContain('.\\start.ps1');                                  // the backslash must survive string escaping
   });
 

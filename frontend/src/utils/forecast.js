@@ -41,6 +41,15 @@ export function timeAxis(timestamps) {
 
 const POINTS = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
 /** 58 -> 'ENE'. Directions are meteorological wind-FROM degrees. */
+/** The expected-energy card turns green at or above this many kWh for the 24 hours, red below it. */
+export const ENERGY_TARGET_KWH = 2000;
+
+/** 'good' (at or above the target), 'bad' (below it), or undefined when there is no usable number. */
+export function energyTone(totalKwh, target = ENERGY_TARGET_KWH) {
+  if (typeof totalKwh !== 'number' || !Number.isFinite(totalKwh)) return undefined;
+  return totalKwh >= target ? 'good' : 'bad';
+}
+
 export const cardinal = (deg) => (deg === null || deg === undefined || Number.isNaN(deg) ? '' : POINTS[Math.round((((deg % 360) + 360) % 360) / 22.5) % 16]);
 
 /** Observed history + forecast on one time axis: [{t, observed?, forecast?, hub?}] sorted by time. */

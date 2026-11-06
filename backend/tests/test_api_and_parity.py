@@ -6,6 +6,7 @@ import pandas as pd
 import pytest
 from fastapi.testclient import TestClient
 
+from app.config import settings
 from app.main import app
 from app.services import data_service as ds
 from app.services.feature_service import check_no_lookahead
@@ -24,9 +25,10 @@ def test_health_endpoint():
 
 def test_cors_allows_only_local_frontend():
     c = TestClient(app)
-    ok = c.get("/api/health", headers={"Origin": "http://localhost:5173"})
+    origin = settings.cors_origins[0]                                   # the configured local frontend
+    ok = c.get("/api/health", headers={"Origin": origin})
     bad = c.get("/api/health", headers={"Origin": "http://evil.example"})
-    assert ok.headers.get("access-control-allow-origin") == "http://localhost:5173"
+    assert ok.headers.get("access-control-allow-origin") == origin
     assert "access-control-allow-origin" not in bad.headers
 
 

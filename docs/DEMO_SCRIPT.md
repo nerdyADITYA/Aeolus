@@ -9,7 +9,7 @@ The most important thing to say out loud, and the thing that makes this project 
 ## Before you present
 
 **The day before**
-- [ ] Run `.\start.ps1`, open http://localhost:5173 and confirm the site status chip says *data to 2026-10-21 23:00 UTC* (a prepared site must already exist; preparing one takes about 6 minutes, so never do it live).
+- [ ] Run `.\start.ps1`, open http://localhost:5200 and confirm the site status chip says *data to 2026-10-21 23:00 UTC* (a prepared site must already exist; preparing one takes about 6 minutes, so never do it live).
 - [ ] In **Forecast**, run forecasts for **two or three earlier dates** (for example 3, 6 and 9 days before the latest date). Each takes about a minute. (The *latest* date works too: the comparison chart only needs two forecasts, not observations.)
 - [ ] Scroll to **Model vs Open-Meteo** and confirm the chart draws both lines (it fetches Open-Meteo automatically, so this checks the internet connection).
 - [ ] Read the numbers on screen and update the cheat sheet below if they differ.

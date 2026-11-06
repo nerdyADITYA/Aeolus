@@ -39,9 +39,9 @@ class Settings(BaseSettings):
     data_dir: Path = BACKEND_ROOT / "data"
     models_dir: Path = BACKEND_ROOT / "models"
     reports_dir: Path = BACKEND_ROOT / "reports"
-    cors_origins: list[str] = ["http://localhost:5173", "http://127.0.0.1:5173"]
+    cors_origins: list[str] = ["http://localhost:5200", "http://127.0.0.1:5200"]
     api_host: str = "127.0.0.1"          # local only (plan section 3.7)
-    api_port: int = 8000
+    api_port: int = 8100
     rate_limit_per_min: int = 60             # per-IP limit on PUT/POST/PATCH; 0 disables
 
     def ensure_dirs(self) -> None:

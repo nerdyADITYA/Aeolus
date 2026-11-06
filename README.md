@@ -567,7 +567,7 @@ Numbers shift slightly when you prepare a site on a later date because the data 
 
 ```
  Browser (React dashboard)  <--- HTTP/JSON --->  FastAPI backend (Python)  ---> SQLite database + files
-      localhost:5173                                  127.0.0.1:8000             backend/data, backend/models
+      localhost:5200                                  127.0.0.1:8100             backend/data, backend/models
                                                            |
                                                            +--> Open-Meteo (archive, previous runs), NREL turbine package
 ```
@@ -605,7 +605,7 @@ Everything runs on **your PC only**. There is no login, no cloud, no deployment.
 
 ### API
 
-Interactive documentation of every route: **http://127.0.0.1:8000/docs** while the backend runs. Main routes: `PUT/GET/PATCH /api/site`, `GET/POST /api/site/forecast`, `GET /api/site/export`, `GET /api/site/models/report`, `GET /api/site/models/direction`, `GET /api/site/data/quality`, `GET /api/site/compare`, `GET /api/site/api-comparison`, `GET /api/turbines`, `GET /api/jobs/{id}`.
+Interactive documentation of every route: **http://127.0.0.1:8100/docs** while the backend runs. Main routes: `PUT/GET/PATCH /api/site`, `GET/POST /api/site/forecast`, `GET /api/site/export`, `GET /api/site/models/report`, `GET /api/site/models/direction`, `GET /api/site/data/quality`, `GET /api/site/compare`, `GET /api/site/api-comparison`, `GET /api/turbines`, `GET /api/jobs/{id}`.
 
 ---
 
@@ -622,7 +622,7 @@ cd ..
 .\start.ps1
 ```
 
-Open **http://localhost:5173**. Stop with `Ctrl+C` or `.\stop.ps1`. If PowerShell refuses to run the script: `powershell -ExecutionPolicy Bypass -File .\start.ps1`. Two-terminal alternative: backend `cd backend; python -m uvicorn app.main:app --host 127.0.0.1 --port 8000`, frontend `cd frontend; npm run dev`. The exact versions used in development are in `backend/requirements-tested.txt`.
+Open **http://localhost:5200** (backend on 8100; to use other ports run `.\start.ps1 -BackendPort 9000 -FrontendPort 9100`, and `.\stop.ps1` with the same values). Stop with `Ctrl+C` or `.\stop.ps1`. If PowerShell refuses to run the script: `powershell -ExecutionPolicy Bypass -File .\start.ps1`. Two-terminal alternative: backend `cd backend; python -m uvicorn app.main:app --host 127.0.0.1 --port 8100`, frontend `cd frontend; npm run dev`. The exact versions used in development are in `backend/requirements-tested.txt`.
 
 **First use:** press **Prepare site** (default coordinates are Ahmedabad; click the map or type others). Setup takes about 20 minutes because every site gets the full tuning search. Progress is shown live. When finished, the page fills with the forecast and reports, and everything is stored so the next start is instant.
 
@@ -1002,7 +1002,7 @@ $env:WINDKRAFT_TURBINE_NAME = "BAR_HighSP_5.0MW_134.9"
 | Symptom | Cause and fix |
 |---|---|
 | "Cannot reach the backend" in the first seconds | The backend needs about 8 seconds to start. Wait, then press Retry. |
-| "Port 8000/5173 is already in use" | A previous run is still going. Run `.\stop.ps1`. |
+| "Port 8100/5200 is already in use" | A previous run is still going. Run `.\stop.ps1`. |
 | Blank map | Map tiles need internet. Everything else still works. |
 | Setup fails at the download step | Open-Meteo unreachable or rate-limited. Check internet and press Replace site again. |
 | Model vs Open-Meteo shows an error | The Previous Runs API is unreachable. Press **Try again**. After updating the code, restart the backend (`.\stop.ps1`, then `.\start.ps1`) so it has the newest route. |

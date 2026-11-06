@@ -35,7 +35,7 @@ export async function request(path, { method = 'GET', body, signal } = {}) {
     });
   } catch (err) {
     if (err?.name === 'AbortError') throw err;
-    throw new ApiError(0, 'Cannot reach the backend. Is it running on http://127.0.0.1:8000?', 'Start it with .\\start.ps1');
+    throw new ApiError(0, 'Cannot reach the backend. Is it running?', 'Start it with .\\start.ps1');
   }
   const text = await res.text();
   let data = null;
@@ -49,7 +49,7 @@ export async function request(path, { method = 'GET', body, signal } = {}) {
   if (!res.ok) {
     // The dev proxy answers 502/504 with no JSON body when the backend is down or still starting.
     if ([502, 503, 504].includes(res.status) && data === null) {
-      throw new ApiError(0, 'Cannot reach the backend. Is it running on http://127.0.0.1:8000?', 'Start it with .\\start.ps1, or wait a few seconds if it is starting');
+      throw new ApiError(0, 'Cannot reach the backend. Is it running?', 'Start it with .\\start.ps1, or wait a few seconds if it is starting');
     }
     throw new ApiError(res.status, formatDetail(data?.detail ?? res.statusText), data?.hint ?? null);
   }

@@ -38,7 +38,7 @@ Status: **backend Phases 0-4 built** (see section 10 for the as-built notes); fr
                        joblib models,      Open-Meteo Previous Runs API → comparison ONLY (day-ahead forecasts)
                        reports)            NREL turbine-models pkg → local power curves
 
- All of it runs on one PC: `uvicorn` (backend, port 8000) + `vite` (frontend, port 5173).
+ All of it runs on one PC: `uvicorn` (backend, port 8100) + `vite` (frontend, port 5200).
 ```
 
 Key rules carried over from the notebook:
@@ -280,7 +280,7 @@ Still open (small):
 
 ## 10. As-built notes (backend, Phases 0-4)
 
-**Layout.** `backend/app/` has `api/` (site, jobs, forecast, reports, turbines, health), `services/` (data, features, eval_data, baseline, sarimax, gbm, selection, evaluation, direction, yaw, turbine, forecast, pipeline, compare), `core/` (circular, metrics, registry, jobs, ratelimit, artifacts), `db/` (SQLAlchemy models/session), `schemas/`. Run with `start.ps1`; interactive docs at `http://127.0.0.1:8000/docs`.
+**Layout.** `backend/app/` has `api/` (site, jobs, forecast, reports, turbines, health), `services/` (data, features, eval_data, baseline, sarimax, gbm, selection, evaluation, direction, yaw, turbine, forecast, pipeline, compare), `core/` (circular, metrics, registry, jobs, ratelimit, artifacts), `db/` (SQLAlchemy models/session), `schemas/`. Run with `start.ps1`; interactive docs at `http://127.0.0.1:8100/docs`.
 
 **Differences from the plan above**
 - Forecast hours are one JSON document per run, not a `forecast_hour` table (they are always read whole; energy is recomputed on read).
@@ -302,7 +302,7 @@ Still open (small):
 
 ## 11. As-built notes (frontend, Phase 5)
 
-**Stack.** React 18.3 + Vite, JavaScript/JSX only (a test fails if any `.ts/.tsx` file or TypeScript dependency appears), plain CSS with design tokens, react-leaflet for the map, ESLint 9 (pinned: `eslint-plugin-react` does not support ESLint 10 yet), Vitest + Testing Library. Run with `start.ps1` (backend :8000 + `npm run dev` :5173; the dev server proxies `/api`).
+**Stack.** React 18.3 + Vite, JavaScript/JSX only (a test fails if any `.ts/.tsx` file or TypeScript dependency appears), plain CSS with design tokens, react-leaflet for the map, ESLint 9 (pinned: `eslint-plugin-react` does not support ESLint 10 yet), Vitest + Testing Library. Run with `start.ps1` (backend :8100 + `npm run dev` :5200; the dev server proxies `/api`).
 
 **Built:** design tokens (dark default, light option, remembered), layout (sticky top bar with live status chip), interactive site map (click to set coordinates, dark-styled tiles), coordinate form with validation and a quick/full model-search choice, job progress (polls `GET /api/jobs/{id}` every 2 s, survives page reloads and brief backend outages), site summary, forecast-date picker (range from the backend, stored-forecast chips), turbine and yaw settings (apply instantly, no retraining), headline KPI cards, friendly errors with the backend's hints.
 
